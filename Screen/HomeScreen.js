@@ -154,7 +154,7 @@ const HomeScreen = ({ navigation }) => {
     <View style={{ backgroundColor: '#171921', }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 25, justifyContent: 'space-between' }}>
         <View style={{ paddingRight: 15 }}><NonIcon style={styles.iconHeader} /></View>
-        <Text style={styles.textHeader}>Trader Class </Text>
+        <Text style={styles.textHeader}>Trader Class</Text>
         <View style={{ paddingRight: 15 }}>
           <TouchableOpacity onPress={() => navigation.navigate('UserScreen')}>
             <UserIcon style={styles.iconHeader} />
