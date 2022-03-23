@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AppNavigation from './Navigation/AppNavigation'
+import AppNavigation from './src/routing/AppNavigation'
 export default class App extends Component{
   render(){
     return(

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View, SafeAreaView, ScrollView, StatusBar, StyleSheet, TextInput, FlatList, Image } from 'react-native';
 import SearchIcon from '../Icon/SearchIcon'
 import MicIcon from '../Icon/MicIcon'
@@ -6,6 +6,25 @@ import PlaySmallIcon from '../Icon/PlaySmallIcon'
 
 
 const SearchScreen = () => {
+    const [dataSearch, setDataSearch ] = useState([]);
+
+    useEffect(() => {
+        getListSearch();
+        return () => {
+    
+        }
+      }, [])
+
+      getListSearch = () => {
+        const apiURL = 'https://traderclass.vn/api/search-course?key=lap';
+        fetch(apiURL)
+          .then((res) => res.json())
+          .then((resJson) => {
+            setDataSearch(resJson.data);
+          }).catch((error) => {
+            console.log('Request API ERROR', error);
+          }).finally(() => setisLoading(false))
+      }
 
     renderItem = ({ item, index }) => {
         return (
@@ -14,8 +33,8 @@ const SearchScreen = () => {
                 <View style={{ flexDirection: 'row' }}>
                     <Image source={require('../Image/imageSearch.png')}></Image>
                     <View style={{ justifyContent: 'center', marginLeft: 24 }}>
-                        <Text style={styles.text3}>{item.name}</Text>
-                        <Text style={styles.text5}>{item.key}</Text>
+                        <Text style={styles.text3}>{item.fullname}</Text>
+                        <Text style={styles.text5}>{item.position}</Text>
 
                     </View>
                 </View>
@@ -28,7 +47,7 @@ const SearchScreen = () => {
     }
 
     return (
-        <View style={{ backgroundColor: '#171921', paddingRight: 15, paddingLeft: 15 }}>
+        <View style={{ backgroundColor: '#171921', paddingRight: 15, paddingLeft: 15, flex:1 }}>
             <View style={styles.header}>
                 <Text style={styles.textHeader}>Search</Text>
             </View>
@@ -46,18 +65,7 @@ const SearchScreen = () => {
 
 
                 <FlatList
-                    data={[
-                        { key: 'Devin', name: 'Thanh Nhan', status: 'new' },
-                        { key: 'Dan', name: 'Thanh Nhan' },
-                        { key: 'Dominic', name: 'Thanh Nhan' },
-                        { key: 'Jackson', name: 'Thanh Nhan' },
-                        { key: 'James', name: 'Thanh Nhan' },
-                        { key: 'Joel', name: 'Thanh Nhan' },
-                        { key: 'John', name: 'Thanh Nhan' },
-                        { key: 'Jillian', name: 'Thanh Nhan' },
-                        { key: 'Jimmy', name: 'Thanh Nhan' },
-                        { key: 'Julie', name: 'Thanh Nhan  ' },
-                    ]}
+                    data={dataSearch}
                     renderItem={renderItem}
                 />
 
