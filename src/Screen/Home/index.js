@@ -13,7 +13,7 @@ import { styles } from './styles';
 import ListTopCourse from '../../Components/ListTopCourse';
 import ListCourse from '../../Components/ListTopCourse';
 import ListTopTeacher from '../../Components/ListTeacher'
-import {api_get} from '../../Until/Api'
+import { api_get } from '../../Until/Api'
 
 const HomeScreen = (props) => {
   const numberItem = 5
@@ -54,7 +54,7 @@ const HomeScreen = (props) => {
         console.log('Request API ERROR', error);
       }).finally(() => setisLoading(false))
   }
-   getListTopCourse = () => {
+  getListTopCourse = () => {
     const apiURL = 'https://traderclass.vn/api/top-course';
     fetch(apiURL)
       .then((res) => res.json())
@@ -64,20 +64,11 @@ const HomeScreen = (props) => {
         console.log('Request API ERROR', error);
       }).finally(() => setisLoading(false))
   }
-  // const getListTopCourse = async () => {
-  //   try {
-  //     const get_top_course = 'https://traderclass.vn/api/top-course'
-  //     get_top_course.status ? setDataTopCourse(get_top_course.data) : setTopBookingList([])
-  //   } catch (error) {
-  //     setDataTopCourse([])
-  //   }
-  // }
   getListTop1 = () => {
     const apiURL = 'https://traderclass.vn/api/course/1';
     fetch(apiURL)
       .then((res) => res.json())
       .then((resJson) => {
-        console.log(resJson)
         setDataTop1(resJson.data);
       }).catch((error) => {
         console.log('Request API ERROR', error);
@@ -88,12 +79,12 @@ const HomeScreen = (props) => {
     return (
 
       <TouchableOpacity onPress={() => console.log(item.id)}>
-        <ImageBackground source={{uri:item.photo}} style={styles.item}>
+        <ImageBackground source={{ uri: item.photo }} style={styles.item}>
           {/* <StatusIcon/> */}
           <LinearGradient colors={['transparent', '#171921']}
             style={styles.linearGradient2}>
             <Text style={styles.text3}
-            adjustsFontSizeToFit = {true}
+              adjustsFontSizeToFit={true}
             >{item.fullname}</Text>
             <RectangleIcon />
             <Text style={styles.text5}>{item.position}</Text>
@@ -131,7 +122,7 @@ const HomeScreen = (props) => {
         <View style={{ paddingRight: 15 }}><NonIcon style={styles.iconHeader} /></View>
         <Text style={styles.textHeader}>Trader Class</Text>
         <View style={{ paddingRight: 15 }}>
-          <TouchableOpacity onPress={() => navigation.navigate('UserScreen')}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('User')}>
             <UserIcon style={styles.iconHeader} />
           </TouchableOpacity>
         </View>
@@ -139,7 +130,7 @@ const HomeScreen = (props) => {
       <ScrollView style={{ marginBottom: 80 }} >
         <StatusBar style="auto" />
         <View style={{ paddingBottom: 25, height: 257 }}>
-          <ImageBackground source={{uri: dataTop1.photo}} style = {{height:"100%", justifyContent:'flex-end'}}>
+          <ImageBackground source={{ uri: dataTop1.photo }} style={{ height: "100%", justifyContent: 'flex-end' }}>
             <LinearGradient
               colors={['transparent', '#171921']}
               style={styles.linearGradient}>
@@ -165,15 +156,15 @@ const HomeScreen = (props) => {
         </View>
         <Text style={styles.textTitle}>Top course</Text>
         <ListTopCourse
-          data = {dataTopCourse}
-          navigation = {props.navigation}
-          />
+          data={dataTopCourse}
+          navigation={props.navigation}
+        />
 
         <Text style={styles.textTitle2}>Top teacher</Text>
         <ListTopTeacher
-          data = {dataTopTeacher}
-          navigation = {props.navigation}
-          />
+          data={dataTopTeacher}
+          navigation={props.navigation}
+        />
 
         <Text style={styles.textTitle2}>Watched</Text>
 
@@ -197,9 +188,9 @@ const HomeScreen = (props) => {
         <Text style={styles.textTitle}>Bit coin</Text>
 
         <ListCourse
-          data = {dataCourse}
-          navigation = {props.navigation}
-          />
+          data={dataCourse}
+          navigation={props.navigation}
+        />
 
       </ScrollView>
     </View>

@@ -8,9 +8,15 @@ import ListTeacher from '../Screen/ListTeacher';
 import MyList from '../Screen/MyList'
 import MainTabScreen from "../routing/MainTabScreen";
 import TestScreen from "../Screen/TestScreen";
-// import UserScreen from "../Screen/UserScreen";
+import User from "../Screen/User";
+import Profile from '../Screen/Profile'
+import Membership from '../Screen/Membership'
+import Referall from '../Screen/Referral'
+import UpdateEmail from '../Screen/UpdateEmail'
+import Password from '../Screen/Password'
+import Terms from '../Screen/Terms'
 // import IntroduceScreen from '../Screen/IntroduceScreen'
-// import ProfileScreen from '../Screen/ProfileScreen'
+
 // import UpdateEmailScreen from '../Screen/UpdateEmailScreen'
 // import UpdatePasswordScreen from "../Screen/UpdatePasswordScreen";
 // import LanguageScreen from "../Screen/LanguageScreen";
@@ -36,6 +42,13 @@ export default class AppNavigation extends Component{
                     <Stack.Screen name = "MyList" component = {MyList}/>
                     <Stack.Screen name = "NewHot" component = {NewHot}/>
                     <Stack.Screen name = "TestScreen" component = {TestScreen}/>
+                    <Stack.Screen name = "User" component = {User}/>
+                    <Stack.Screen name = "Profile" component = {Profile}/>
+                    <Stack.Screen name = "Membership" component = {Membership}/>
+                    <Stack.Screen name = "Referall" component = {Referall}/>
+                    <Stack.Screen name = "UpdateEmail" component = {UpdateEmail}/>
+                    <Stack.Screen name = "Password" component = {Password}/>
+                    <Stack.Screen name = "Terms" component = {Terms}/>
                     {/* <Stack.Screen name = "UserScreen" component = {UserScreen}/>
                     <Stack.Screen name = "IntroduceScreen" component = {IntroduceScreen}/>
                     <Stack.Screen name = "ProfileScreen" component = {ProfileScreen}/>
