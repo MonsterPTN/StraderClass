@@ -5,4 +5,5 @@ export const Colors = {
     fourth: "#FFFFFF",
     fifth: "#000000",
      sixth: "#828282",
+     seventh:'#262932'
 }

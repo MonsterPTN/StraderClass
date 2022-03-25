@@ -9,7 +9,7 @@ export default function CourseItem(props) {
 
     return (
 
-        <TouchableOpacity onPress={() => props.navigation.navigate('TestScreen')} style={props.style}>
+        <TouchableOpacity onPress={() => props.navigation.navigate('Lesturers')} style={props.style}>
             <ImageBackground source={{ uri: item.photo }} style={styles.item}>
                 {/* <StatusIcon/> */}
                 <LinearGradient colors={['transparent', '#171921']}
