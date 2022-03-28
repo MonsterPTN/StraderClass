@@ -1,5 +1,4 @@
 import React from "react";
-
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from '../Screen/Home';
@@ -102,7 +101,7 @@ const NewHotScreenStack = ({ navigation }) => (
         }
     }}>
         <NewHotStack.Screen name="NewHot" component={NewHotScreen} options={{
-            title: 'Home', headerShown: false
+            title: 'NewHot', headerShown: false
         }} />
     </NewHotStack.Navigator>
 );
@@ -117,7 +116,7 @@ const SearchScreenStack = ({ navigation }) => (
         }
     }}>
         <SearchStack.Screen name="Search" component={Search} options={{
-            title: 'Home', headerShown: false
+            title: 'Search', headerShown: false
         }} />
     </SearchStack.Navigator>
 
@@ -133,7 +132,7 @@ const ListTeacherScreenStack = ({ navigation }) => (
         }
     }}>
         <ListTeacherStack.Screen name="ListTeacher" component={ListTeacher} options={{
-            title: 'Home', headerShown: false
+            title: 'ListTeacher', headerShown: false
         }} />
     </ListTeacherStack.Navigator>
 
@@ -149,7 +148,7 @@ const MyListScreenStack = ({ navigation }) => (
         }
     }}>
         <MyListStack.Screen name="MyList" component={MyList} options={{
-            title: 'Home', headerShown: false
+            title: 'MyList', headerShown: false
         }} />
     </MyListStack.Navigator>
 

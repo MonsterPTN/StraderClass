@@ -143,7 +143,12 @@ const HomeScreen = (props) => {
                 <TouchableOpacity>
                   <ShareIcon />
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => props.navigation.navigate('TestScreen', {
+                itemUrlVideo: dataTop1.video_id,
+                itemNameVideo: dataTop1.name,
+                itemPhotoTeacher: dataTop1.teacherPhoto,
+                itemNameTeacher: dataTop1.teacherName
+            })}>
                   <PlayIcon />
                 </TouchableOpacity>
                 <TouchableOpacity>

@@ -17,6 +17,7 @@ import Password from '../Screen/Password'
 import Terms from '../Screen/Terms'
 import Lesturers from "../Screen/Lesturers";
 import Payment from '../Screen/Payment'
+import Watch from '../Screen/Watch'
 const Stack = createStackNavigator();
 
 export default class AppNavigation extends Component{
@@ -42,7 +43,7 @@ export default class AppNavigation extends Component{
                     <Stack.Screen name = "Password" component = {Password}/>
                     <Stack.Screen name = "Terms" component = {Terms}/>
                     <Stack.Screen name = "Lesturers" component = {Lesturers}/>
-                    <Stack.Screen name = "Payment" component = {Payment}/>
+                    <Stack.Screen name = "Watch" component = {Watch}/>
                 </Stack.Navigator>
             </NavigationContainer>
         )

@@ -3,7 +3,7 @@ import { Item, FlatList, createMaterialTopTabNavigator, createStackNavigator, Na
 import LinearGradient from 'react-native-linear-gradient';
 import RectangleIcon from "../../Icons/RectangleIcon"
 import SubtractIcon from "../../Icons/SubtractIcon"
-import StarOrangeIcon from "../../Icons/StarIcon"
+import StarOrangeIcon from "../../Icons/StarOrangeIcon"
 import PlaySmallOrangeIcon from "../../Icons/PlaySmallOrangeIcon"
 import WatchIcon from "../../Icons/WatchIcon"
 import BackIcon from "../../Icons/BackIcon"
@@ -85,7 +85,7 @@ export default function Lesturers({route}) {
 
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => navigation.navigate('MainTabScreen')}>
+                <TouchableOpacity>
                     <BackIcon/>
                 </TouchableOpacity>
                 <Text style={styles.textHeader}>Lesturers</Text>
