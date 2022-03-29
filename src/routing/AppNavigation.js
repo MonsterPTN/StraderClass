@@ -18,34 +18,55 @@ import Terms from '../Screen/Terms'
 import Lesturers from "../Screen/Lesturers";
 import Payment from '../Screen/Payment'
 import Watch from '../Screen/Watch'
+
+import StartScreen from '../Screen/Start/StartScreen'
+import SiginScreen from '../Screen/SignIn/SiginScreen'
+import CreateAccount from '../Screen/CreateAccount/CreateAccount'
+import ForgotPassword from '../Screen/ForgotPassword/ForgotPassword'
+import VerifyPhone from '../Screen/VerifyPhone/VerifyPhone'
+import VerifyOTP from '../Screen/VerifyOTP/VerityOTP'
+
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import allReducter from '../Redux';
+const store = createStore(allReducter, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
 const Stack = createStackNavigator();
 
-export default class AppNavigation extends Component{
-    render(){
-        return(
+export default function AppNavigation () {
+    // render() {
+        return (
+            <Provider store={store}>
             <NavigationContainer>
                 <Stack.Navigator
-                screenOptions = {{headerShown: false}}
-                initialRouteName = {'MainTabScreen'}
-                >
-                    <Stack.Screen name = "MainTabScreen" component = {MainTabScreen}/>
-                    <Stack.Screen name = "Home" component = {Home}/>
-                    <Stack.Screen name = "Search" component = {Search}/>
-                    <Stack.Screen name = "ListTeacher" component = {ListTeacher}/>
-                    <Stack.Screen name = "MyList" component = {MyList}/>
-                    <Stack.Screen name = "NewHot" component = {NewHot}/>
-                    <Stack.Screen name = "TestScreen" component = {TestScreen}/>
-                    <Stack.Screen name = "User" component = {User}/>
-                    <Stack.Screen name = "Profile" component = {Profile}/>
-                    <Stack.Screen name = "Membership" component = {Membership}/>
-                    <Stack.Screen name = "Referall" component = {Referall}/>
-                    <Stack.Screen name = "UpdateEmail" component = {UpdateEmail}/>
-                    <Stack.Screen name = "Password" component = {Password}/>
-                    <Stack.Screen name = "Terms" component = {Terms}/>
-                    <Stack.Screen name = "Lesturers" component = {Lesturers}/>
-                    <Stack.Screen name = "Watch" component = {Watch}/>
+                    screenOptions={{ headerShown: false }}
+                    initialRouteName={'StartScreen'}>
+                        
+                    <Stack.Screen name="StartScreen" component={StartScreen} />
+                    <Stack.Screen name="SiginScreen" component={SiginScreen} />
+                    <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+                    <Stack.Screen name="CreateAccount" component={CreateAccount} />
+                    <Stack.Screen name="VerifyPhone" component={VerifyPhone} />
+                    <Stack.Screen name="VerifyOTP" component={VerifyOTP} />
+                    <Stack.Screen name="MainTabScreen" component={MainTabScreen} />
+                    <Stack.Screen name="Home" component={Home} />
+                    <Stack.Screen name="Search" component={Search} />
+                    <Stack.Screen name="ListTeacher" component={ListTeacher} />
+                    <Stack.Screen name="MyList" component={MyList} />
+                    <Stack.Screen name="NewHot" component={NewHot} />
+                    <Stack.Screen name="TestScreen" component={TestScreen} />
+                    <Stack.Screen name="User" component={User} />
+                    <Stack.Screen name="Profile" component={Profile} />
+                    <Stack.Screen name="Membership" component={Membership} />
+                    <Stack.Screen name="Referall" component={Referall} />
+                    <Stack.Screen name="UpdateEmail" component={UpdateEmail} />
+                    <Stack.Screen name="Password" component={Password} />
+                    <Stack.Screen name="Terms" component={Terms} />
+                    <Stack.Screen name="Lesturers" component={Lesturers} />
+                    <Stack.Screen name="Watch" component={Watch} />
                 </Stack.Navigator>
             </NavigationContainer>
+            </Provider>
         )
-    }
+    // }
 }
