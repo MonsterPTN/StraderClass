@@ -8,28 +8,22 @@ export default function ItemNextVideo(props) {
     return (
         <View>
             <TouchableOpacity onPress={() => props.navigation.navigate('TestScreen', {
-                itemUrlVideo: item.video_id,
+                itemUrlVideo: item.id_video,
                 itemNameVideo: item.name,
                 itemPhotoTeacher: item.teacherPhoto,
                 itemNameTeacher: item.teacherName})}
             style={styles.view1} >
-                <ImageBackground source={{ uri: item.photo }} style={styles.imgBackground}></ImageBackground>
-            </TouchableOpacity>
-            <View style={styles.view2}>
-                <TouchableOpacity style={styles.touch}>
-                    <View>
-                        <Image source={{ uri: item.teacherPhoto }} style={styles.imageAvt}></Image>
+                <View style ={styles.view2}>
+                    <Image source={{uri:item.photo}} style = {styles.image}/>
+                    <View style = {styles.view3}>
+                    <Text style = {styles.text1}>{item.name}</Text>
+                    <Text style = {styles.text2}>{item.teacherName}</Text>
                     </View>
-                    <View style={styles.view3}>
-                            <Text style={styles.textItemName}
-                                numberOfLines={1}>{item.name}</Text>
-                        <View style={styles.view5}>
-                            <Text style={styles.textItemVideo}>{item.teacherName}</Text>
-                            <Text style={styles.textItemVideo}>{item.count_user_course} view</Text>
-                        </View>
-                    </View>
+                </View>
+                <View>
+                    <Text style = {styles.text3} numberOfLines={5}>{item.description}</Text>
+                </View>
                 </TouchableOpacity>
-            </View>
         </View>
 
     )

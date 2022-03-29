@@ -4,90 +4,40 @@ import { Colors } from "../../Until/Colors";
 import { scale } from "react-native-size-matters";
 
 export const styles = StyleSheet.create({
-    imgBackground: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'cover'
-    },
-    imageAvt: {
-        height: scale(50),
-        width: scale(50),
-        resizeMode: 'cover',
-        borderRadius: 40,
-        marginTop: 16
-    },
-    textItemName: {
-        color: Colors.fourth,
-        fontSize: 16,
-        fontWeight: 'normal',
-        fontFamily: Fonts.font_700,
-        marginTop: 15,
-    },
-    textItemVideo: {
-        color: Colors.sixth,
-        fontSize: 11,
-        fontWeight: 'normal',
-        fontFamily: Fonts.font_700,
-        margin:5
-    },
-    buttonRegistNow: {
-        borderRadius: 5,
-        borderColor: Colors.second,
-        borderWidth: 1,
-        color: Colors.second,
-        fontWeight: 'normal', padding: 9,
-        fontFamily: Fonts.font_700,
-        marginTop: 15
-
-    },
-    textTille: {
-        color: Colors.fourth,
-        fontSize: 18,
-        fontWeight: 'normal',
-        fontFamily: Fonts.font_600,
-    },
-    textDetail: {
-        color: Colors.sixth,
-        fontSize: 12,
-        fontWeight: 'normal',
-        fontFamily: 'Poppins',
-    },
     view1: {
-        height: 180,
-        width: 384,
+        height: 210,
+        marginVertical:8,
+        backgroundColor:Colors.sixth,
+        borderRadius:10,
+        padding:16,
+        flexDirection:'column'
+    },
+    view2:{
+        flexDirection:'row',
+    },
+    image:{
+        height:70,
+        width:120
+    },
+    text1:{
+        color:Colors.fourth,
+        fontFamily:Fonts.font_600,
+        fontSize:14
+    },
+    text2:{
+        color:Colors.third,
+        fontFamily:Fonts.font_600,
+        fontSize:14
+    },
+    text3:{
         marginTop:16,
-        backgroundColor:Colors.sixth
+        color:Colors.third
     },
-    view2: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        backgroundColor:Colors.third,
-        paddingHorizontal:10,
-        paddingBottom:10,
-        borderBottomEndRadius:10,
-        borderBottomStartRadius:10
-    },
-    touch: {
-        flexDirection: 'row',
-        alignItems: 'center',
+    view3:{
+        marginLeft:16,
         flex:1,
-        width:'100%'
-    },
-    view3: {
-        flexDirection: 'column',
-        marginLeft: 15,
+        justifyContent:'flex-start'
         
-    },
-    view4: {
-        marginTop: 16,
-        marginBottom: 30
-    },
-    view5:{
-        flexDirection:'row'
-    },
-    view6:{
-        flex:1,
     }
 
 
