@@ -13,7 +13,7 @@ import NonIcon from '../../Icons/NonIcon'
 import Vnd from '../../Icons/VNDIcon'
 import { styles } from './styles';
 
-const MembershipScreen = ({navigation}) => {
+const MembershipScreen = (props) => {
   //khai bao chuyen man 
   const [screen, setScreen] = useState(1)
 
@@ -34,7 +34,7 @@ const MembershipScreen = ({navigation}) => {
           </View>
         </View>
         <View>
-          <TouchableOpacity onPress = {()=> navigation.navigate('PaymentScreen')}
+          <TouchableOpacity onPress = {()=> props.navigation.navigate('Payment')}
             style={styles.playss}>
             <Text style={styles.touch1}>Regist Now</Text>
           </TouchableOpacity>

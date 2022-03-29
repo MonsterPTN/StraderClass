@@ -15,16 +15,9 @@ import Referall from '../Screen/Referral'
 import UpdateEmail from '../Screen/UpdateEmail'
 import Password from '../Screen/Password'
 import Terms from '../Screen/Terms'
-// import IntroduceScreen from '../Screen/IntroduceScreen'
-
-// import UpdateEmailScreen from '../Screen/UpdateEmailScreen'
-// import UpdatePasswordScreen from "../Screen/UpdatePasswordScreen";
-// import LanguageScreen from "../Screen/LanguageScreen";
-// import TermsConditionsScreen from "../Screen/TermConditionsScreen";
-// import ChagePinScreen from '../Screen/ChangPinScreen'
-// import Lesturers from '../Screen/Lesturers'
-// import PaymentScreen from '../Screen/PaymentScreen'
-// import MembershipScreen from "../Screen/MembershipScreen";
+import Lesturers from "../Screen/Lesturers";
+import Payment from '../Screen/Payment'
+import Watch from '../Screen/Watch'
 const Stack = createStackNavigator();
 
 export default class AppNavigation extends Component{
@@ -49,17 +42,8 @@ export default class AppNavigation extends Component{
                     <Stack.Screen name = "UpdateEmail" component = {UpdateEmail}/>
                     <Stack.Screen name = "Password" component = {Password}/>
                     <Stack.Screen name = "Terms" component = {Terms}/>
-                    {/* <Stack.Screen name = "UserScreen" component = {UserScreen}/>
-                    <Stack.Screen name = "IntroduceScreen" component = {IntroduceScreen}/>
-                    <Stack.Screen name = "ProfileScreen" component = {ProfileScreen}/>
-                    <Stack.Screen name = "UpdateEmailScreen" component = {UpdateEmailScreen}/>
-                    <Stack.Screen name = "UpdatePasswordScreen" component = {UpdatePasswordScreen}/>
-                    <Stack.Screen name = "LanguageScreen" component = {LanguageScreen}/>
-                    <Stack.Screen name = "TermsConditionsScreen" component = {TermsConditionsScreen}/>
-                    <Stack.Screen name = "ChagePinScreen" component = {ChagePinScreen}/>
                     <Stack.Screen name = "Lesturers" component = {Lesturers}/>
-                    <Stack.Screen name = "PaymentScreen" component = {PaymentScreen}/>
-                    <Stack.Screen name = "MembershipScreen" component = {MembershipScreen}/> */}
+                    <Stack.Screen name = "Watch" component = {Watch}/>
                 </Stack.Navigator>
             </NavigationContainer>
         )
