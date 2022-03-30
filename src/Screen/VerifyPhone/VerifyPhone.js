@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import PhoneInput from 'react-native-phone-number-input';
+import { styles } from './styles'
 
 
 import {
@@ -34,10 +35,10 @@ export default function App({ navigation }) {
         <SafeAreaView style={styles.safeview}>
             <View style={styles.viewTop}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <BackIcon style={{ paddingVertical: 35, marginLeft: 20 }} />
+                    <BackIcon style={styles.iconBack} />
                 </TouchableOpacity>
             </View>
-            <View style={{ flex: 1 }}>
+            <View style={styles.viewTextTop}>
                 <View>
                     <Text style={styles.verifyText}>VerifyPhone your number phone</Text>
                     <Text style={styles.message}>We have send you an SMS with a code to number +84 369741095</Text>
@@ -47,43 +48,17 @@ export default function App({ navigation }) {
                         defaultCode='VN'
                         placeholder='Phone number'
                         codeTextStyle={{ color: '#FFFFFF' }}
-                        
 
-                        flagButtonStyle={{
-                            backgroundColor: '#272A38',
-                            borderTopLeftRadius: 30,
-                            borderBottomLeftRadius: 30,
-                            borderWidth: 1,
-                            borderColor: '#FF8600',
-                        }}
-                        textInputStyle={{
-                            backgroundColor: '#272A38',
-                            height: 45,
-                            color: '#FFFFFF',
-                        }}
-
-                        textContainerStyle={{
-                            width: '100%',
-                            height: 60,
-                            alignItems: 'center',
-                            borderTopRightRadius: 30,
-                            borderBottomRightRadius: 30,
-                            backgroundColor: '#272A38',
-                            borderWidth: 1,
-                            borderColor: '#FF8600',
-                        }}
-
-                        containerStyle={{
-                            borderRadius: 30,
-                            backgroundColor: 'white'
-                        }}
-
+                        flagButtonStyle={styles.flagbutton}
+                        textInputStyle={styles.textinput}
+                        textContainerStyle={styles.textContainer}
+                        containerStyle={styles.container}
                     ></PhoneInput>
                 </View>
             </View>
-            <View style={{ flex: 1, justifyContent: 'flex-end', marginBottom: 10, }}>
+            <View style={styles.viewBot}>
                 <View style={styles.viewLoginWith}>
-                    <Text style={{ color: '#FFFFFF', fontWeight: '500' }}>
+                    <Text style={styles.textOW}>
                         Or login with
                     </Text>
                     <TouchableOpacity onPress={() => navigation.navigate('StartScreen')}>
@@ -93,8 +68,8 @@ export default function App({ navigation }) {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.viewTouch}>
-                    <TouchableOpacity style={[styles.touchSend, { backgroundColor: '#FF8600' }]} onPress={() => navigation.navigate('VerifyOTP')} >
-                        <Text style={[styles.textTouchSend, { color: '#000000' }]}>
+                    <TouchableOpacity style={[styles.touchSend]} onPress={() => navigation.navigate('VerifyOTP')} >
+                        <Text style={[styles.textTouchSend]}>
                             Send
                         </Text>
                     </TouchableOpacity>
@@ -103,69 +78,3 @@ export default function App({ navigation }) {
         </SafeAreaView>
     );
 };
-const styles = StyleSheet.create({
-    PhoneInput: {
-    },
-    viewLoginWith: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        marginTop: 55,
-
-    },
-    textSignup: {
-        color: '#FF8600',
-        fontWeight: '500',
-        marginLeft: 5,
-    },
-    message: {
-        color: '#9A9A9A',
-        fontSize: 14,
-        fontWeight: '500',
-        marginHorizontal: 45,
-        textAlign: 'center',
-        marginBottom: 70,
-    },
-    verifyText: {
-        marginBottom: 25,
-        textAlign: 'center',
-        color: '#FF8600',
-        fontSize: 33,
-        fontWeight: '600',
-        marginHorizontal: 30,
-
-    },
-    viewinput: {
-        alignItems: 'center',
-    },
-    input: {
-        borderWidth: 1,
-        width: '90%',
-        paddingVertical: 15,
-        borderRadius: 30,
-        backgroundColor: '#272A38',
-        borderColor: '#FF8600',
-        paddingHorizontal: 25,
-        color: '#FF8600',
-        margin: 10,
-
-    },
-    textTouchSend: {
-        fontSize: 14,
-        fontWeight: '700',
-    },
-    viewTouch: {
-        alignItems: 'center',
-    },
-    touchSend: {
-        width: '100%',
-        alignItems: 'center',
-        paddingVertical: 15,
-        marginTop: 30,
-    },
-    safeview: {
-        flex: 1,
-        backgroundColor: '#000000',
-    },
-
-});
-

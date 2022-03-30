@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import AutoNextInput from '../../Screen/AutoNextInput/AutoNextInput'
 
+import { styles } from './styles'
+
 
 import {
     SafeAreaView,
@@ -33,11 +35,11 @@ export default function App({ navigation }) {
         <SafeAreaView style={styles.safeview}>
             <View style={styles.viewTop}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <BackIcon style={{ paddingVertical: 35, marginLeft: 20 }} />
+                    <BackIcon style={styles.iconBack} />
                 </TouchableOpacity>
             </View>
 
-            <View style={{ flex: 1 }}>
+            <View style={styles.viewEnterCode}>
                 <View>
                     <Text style={styles.verifyText}>Phone Verifycation</Text>
                     <Text style={styles.message}>Enter your OTP code here</Text>
@@ -46,9 +48,9 @@ export default function App({ navigation }) {
                     <AutoNextInput />
                 </View>
             </View>
-            <View style={{ flex: 1, justifyContent: 'flex-end', marginBottom: 10, }}>
+            <View style={styles.viewResendCode}>
                 <View style={styles.viewLoginWith}>
-                    <Text style={{ color: '#FFFFFF', fontWeight: '500', textAlign: 'center' }}>
+                    <Text style={styles.textDC}>
                         Didn't you received any code
                     </Text>
                     <TouchableOpacity>
@@ -58,8 +60,8 @@ export default function App({ navigation }) {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.viewTouch}>
-                    <TouchableOpacity style={[styles.touchConfirm, { backgroundColor: '#FF8600' }]}>
-                        <Text style={[styles.textConfirm, { color: '#000000' }]}>
+                    <TouchableOpacity style={[styles.touchConfirm]}>
+                        <Text style={[styles.textConfirm]}>
                             Confirm
                         </Text>
                     </TouchableOpacity>
@@ -68,70 +70,3 @@ export default function App({ navigation }) {
         </SafeAreaView>
     );
 };
-const styles = StyleSheet.create({
-    viewcircle: {
-        margin: 10,
-        width: 60,
-        height: 60,
-        backgroundColor: '#273B4A',
-        borderRadius: 60 / 2,
-        alignItems: 'center',
-    },
-    PhoneInput: {
-    },
-    viewLoginWith: {
-        justifyContent: 'center',
-    },
-    textNewCode: {
-        color: '#FF8600',
-        fontWeight: '500',
-        marginLeft: 5,
-        textAlign: 'center',
-    },
-    message: {
-        color: '#9A9A9A',
-        fontSize: 14,
-        fontWeight: '500',
-        marginHorizontal: 45,
-        textAlign: 'center',
-        marginBottom: 70,
-    },
-    verifyText: {
-        marginBottom: 25,
-        textAlign: 'center',
-        color: '#FF8600',
-        fontSize: 33,
-        fontWeight: '600',
-    },
-    viewinput: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    input: {
-        flex: 1,
-        fontSize: 24,
-        fontWeight: '500',
-        textAlign: 'center',
-        textAlignVertical: 'center',
-        color: '#FFFFFF',
-    },
-    textConfirm: {
-        fontSize: 14,
-        fontWeight: '700',
-    },
-    viewTouch: {
-        alignItems: 'center',
-    },
-    touchConfirm: {
-        width: '100%',
-        alignItems: 'center',
-        paddingVertical: 15,
-        marginTop: 30,
-    },
-    safeview: {
-        flex: 1,
-        backgroundColor: '#000000',
-    },
-
-});
-
