@@ -54,7 +54,7 @@ export default function App({ navigation }) {
              
                 } else {
            
-                    store.dispatch({ type: "Login", payload: resJson.data.token })
+                    // store.dispatch({ type: "Login", payload: resJson.data.token })
                     navigation.navigate('MainTabScreen')
 
                     // console.log("name " + resJson.data.token)
