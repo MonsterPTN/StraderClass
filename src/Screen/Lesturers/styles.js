@@ -309,5 +309,26 @@ export const styles = StyleSheet.create({
     
     
       },
+      centeredView: {
+        flex: 1,
+        marginTop:'20%'
+
+    },
+    modalView: {
+        backgroundColor: Colors.third,
+        borderRadius: 20,
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+        padding:10
+    },
+    viewClose:{
+        alignItems:'flex-end',
+        marginBottom:10
+    }
 
 });

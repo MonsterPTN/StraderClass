@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, ImageBackground, } from 'react-native'
 import { styles } from './styles';
-import CourseItem from '../CourseItem'
+import CourseByTeacherItem from '../CourseByTeacherItem'
 
 
-export default function ListCourse(props) {
+export default function ListCourseByTeacher(props) {
     return (
         <View>
             <FlatList
                 data={props.data}
                 renderItem={({index, item}) =>(
-                    <CourseItem
+                    <CourseByTeacherItem
                         navigation = {props.navigation}
                         item = {item}
                         style = {index == 0? styles.firstItem:
@@ -18,7 +18,7 @@ export default function ListCourse(props) {
                         styles.lastItem : styles.centerItem}
                         />
                 )}
-                // keyExtractor = {(item) => item.id}
+                keyExtractor = {(item) => item.id}
                 horizontal
             />
         </View>

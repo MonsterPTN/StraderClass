@@ -12,7 +12,8 @@ export default function TeacherItem(props) {
         <TouchableOpacity onPress={() => props.navigation.navigate('Lesturers', {
           itemNameTeacher: item.fullname,
           itemPositionName: item.position,
-          itemPhoto:item.photo
+          itemPhoto:item.photo,
+          itemId:item.id
         }
         
         
