@@ -18,7 +18,7 @@ export default function ListCourse(props) {
                         styles.lastItem : styles.centerItem}
                         />
                 )}
-                keyExtractor = {(item) => item.id}
+                // keyExtractor = {(item) => item.id}
                 horizontal
             />
         </View>

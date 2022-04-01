@@ -13,10 +13,7 @@ import { styles } from './styles';
 import ListTopCourse from '../../Components/ListTopCourse';
 import ListCourse from '../../Components/ListTopCourse';
 import ListTopTeacher from '../../Components/ListTeacher'
-import { api_get } from '../../Until/Api'
-
 const HomeScreen = (props) => {
-  const numberItem = 5
   const [dataCourse, setDataCourse] = useState([]);
   const [dataTopCourse, setDataTopCourse] = useState([]);
   const [dataTopTeacher, setDataTopTeacher] = useState([]);
@@ -130,7 +127,7 @@ const HomeScreen = (props) => {
       <ScrollView style={{ marginBottom: 80 }} >
         <StatusBar style="auto" />
         <View style={{ paddingBottom: 25, height: 257 }}>
-          <ImageBackground source={{ uri: dataTop1.photo }} style={{ height: "100%", justifyContent: 'flex-end' }}>
+          <ImageBackground source={dataTop1.photo ? { uri: dataTop1.photo } : require('../../Static/Image/tcit.png')} style={{ height: "100%", justifyContent: 'flex-end' }}>
             <LinearGradient
               colors={['transparent', '#171921']}
               style={styles.linearGradient}>

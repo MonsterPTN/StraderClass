@@ -11,13 +11,13 @@ export default function ItemNextVideo(props) {
                 itemUrlVideo: item.id_video,
                 itemNameVideo: item.name,
                 itemPhotoTeacher: item.teacherPhoto,
-                itemNameTeacher: item.teacherName})}
+                itemNameTeacher: item.fullname})}
             style={styles.view1} >
                 <View style ={styles.view2}>
                     <Image source={{uri:item.photo}} style = {styles.image}/>
                     <View style = {styles.view3}>
                     <Text style = {styles.text1}>{item.name}</Text>
-                    <Text style = {styles.text2}>{item.teacherName}</Text>
+                    
                     </View>
                 </View>
                 <View>
