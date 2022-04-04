@@ -7,6 +7,7 @@ import ItemNextVideo from '../ItemNextVideo'
 export default function ListTopCourseNew(props) {
     return (
         <View>
+
             <FlatList
                 data={props.data}
                 renderItem={({ index, item }) => (

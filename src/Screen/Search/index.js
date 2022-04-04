@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, SafeAreaView, ScrollView, StatusBar, StyleSheet, TextInput, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, StatusBar, TextInput, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
 import SearchIcon from '../../Icons/SearchIcon2'
 import MicIcon from '../../Icons/MicIcon'
 import PlaySmallIcon from '../../Icons/PlaySmallIcon'
@@ -9,8 +9,7 @@ import Voice from '@react-native-community/voice';
 import { Colors } from '../../Until/Colors';
 const SearchScreen = (props) => {
     const [dataSearch, setDataSearch] = useState([]);
-    const [value, onChangeText] = useState('')
-
+    const [isloading, setisLoading] = useState(true);
     const [result, setResult] = useState('')
     const [isLoading, setLoading] = useState(false)
 
@@ -47,13 +46,6 @@ const SearchScreen = (props) => {
         }
     }
 
-    // const stopRecording = async () => {
-    //     try {
-    //         await Voice.stop()
-    //     } catch (error) {
-    //         console.log("error raised", error)
-    //     }
-    // }
 
     useEffect(() => {
         getListSearch();
@@ -73,7 +65,7 @@ const SearchScreen = (props) => {
             }).finally(() => setisLoading(false))
     }
     return (
-        <View style={styles.viewMain}>
+        <SafeAreaView style={styles.viewMain}>
             <View style={styles.header}>
                 <Text style={styles.textHeader}>Search</Text>
             </View>
@@ -101,13 +93,13 @@ const SearchScreen = (props) => {
 
             </View>
             <Text style={styles.textTitle}>Top Search</Text>
-            <ScrollView >
+            <View >
                 <StatusBar style="auto" />
                 <ListCourseSearch
                     data={dataSearch}
                     navigation={props.navigation} />
-            </ScrollView>
-        </View>
+            </View>
+        </SafeAreaView>
     );
 
 }

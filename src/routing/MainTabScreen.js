@@ -1,6 +1,7 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import { createStackNavigator } from "@react-navigation/stack";
+// import { createStackNavigator } from "@react-navigation/stack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from '../Screen/Home';
 import NewHot from '../Screen/NewHot';
 import Search from '../Screen/Search'
@@ -11,17 +12,17 @@ import StarIcon from '../Icons/StarIcon'
 import PresonsIcon from '../Icons/PresonsIcon'
 import ListIcon from '../Icons/ListIcon'
 import SearchIcon from '../Icons/SearchIcon'
-const HomeStack = createStackNavigator();
-const NewHotStack = createStackNavigator();
-const SearchStack = createStackNavigator();
-const ListTeacherStack = createStackNavigator();
-const MyListStack = createStackNavigator();
+const HomeStack = createNativeStackNavigator();
+const NewHotStack = createNativeStackNavigator();
+const SearchStack = createNativeStackNavigator();
+const ListTeacherStack = createNativeStackNavigator();
+const MyListStack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
     <Tab.Navigator initialRouteName="Home" activeColor="white">
     <Tab.Screen
-      name="Home"
+      name="HomeScreen"
       component={HomeScreenStack}
       options={{
         tabBarLabel: 'Home',
@@ -42,7 +43,7 @@ const MainTabScreen = () => (
                 ),
               }} />
         <Tab.Screen
-            name="Search"
+            name="SearchSCreen"
             component={SearchScreenStack}
             options={{
                 tabBarLabel: 'Search',
@@ -52,7 +53,7 @@ const MainTabScreen = () => (
                 ),
               }} />
         <Tab.Screen
-            name="ListTeacher"
+            name="ListTeacherScreen"
             component={ListTeacherScreenStack}
             options={{
                 tabBarLabel: 'Lecturers',
@@ -62,7 +63,7 @@ const MainTabScreen = () => (
                 ),
               }} />
         <Tab.Screen
-            name="MyList"
+            name="MyListScreen"
             component={MyListScreenStack}
             options={{
                 tabBarLabel: 'My List',

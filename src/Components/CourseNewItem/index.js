@@ -19,7 +19,7 @@ export default function CourseItem(props) {
             }
 
             )}>
-                <ImageBackground source={{ uri: item.photo }} style={styles.imgBackground}></ImageBackground>
+                <ImageBackground source={item.photo ? { uri: item.photo } : require('../../Static/Image/image.png')} style={styles.imgBackground}></ImageBackground>
             </TouchableOpacity>
             <View style={styles.view2}>
                 <TouchableOpacity style={styles.touch} onPress = {()=> props.navigation.navigate('Lesturers', {

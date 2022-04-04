@@ -45,12 +45,14 @@ export default function TestScreen({ route, navigation }) {
         ]);
     return (
         <SafeAreaView style={styles.viewMain}>
-            <YoutubePlayer
-                height={scale(200)}
-                play={true}
-                videoId={route.params?.itemUrlVideo}
-            />
-            <ScrollView style={styles.view1}>
+            <View>
+                <YoutubePlayer
+                    height={scale(200)}
+                    play={true}
+                    videoId={route.params?.itemUrlVideo}
+                />
+            </View>
+            <View style={styles.view1}>
                 <View>
                     <Text style={styles.nameVideo}>{route.params?.itemNameVideo}</Text>
                 </View>
@@ -65,11 +67,13 @@ export default function TestScreen({ route, navigation }) {
                         </View>
                     </View>
                 </View>
-                <ListNextVideo
-                    data={dataNextCourse}
-                    navigation={navigation}
-                     />
-            </ScrollView>
+                <View style = {{marginBottom:100}}>
+                    <ListNextVideo
+                        data={dataNextCourse}
+                        navigation={navigation}
+                    />
+                </View>
+            </View>
         </SafeAreaView>
     )
 }
@@ -86,7 +90,7 @@ const styles = StyleSheet.create({
     },
     viewMain: {
         backgroundColor: Colors.primary,
-        flex: 1
+        flex: 1,
     },
     imageTeacher: {
         height: 64,

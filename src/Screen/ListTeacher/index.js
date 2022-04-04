@@ -63,14 +63,14 @@ const ListTeacherScreen = (props) => {
                 />
 
             </View>
-            <ScrollView style={styles.view3}>
+            <View style={styles.view3}>
                 <Text style={styles.textTitle}>RECOMMENDED</Text>
 
                 <ListTeacherFilter
                     data={dataChooseFilter}
                     navigation = {props.navigation}
                 />
-            </ScrollView>
+            </View>
         </View>
     )
 }

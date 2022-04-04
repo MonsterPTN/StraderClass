@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+// import { createStackNavigator } from "@react-navigation/stack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MainTabScreen from "../routing/MainTabScreen";
 import TestScreen from "../Screen/TestScreen";
 import User from "../Screen/User";
@@ -13,7 +14,7 @@ import Terms from '../Screen/Terms'
 import Lesturers from "../Screen/Lesturers";
 import Payment from '../Screen/Payment'
 import Watch from '../Screen/Watch'
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default class AppNavigation extends Component{
     render(){

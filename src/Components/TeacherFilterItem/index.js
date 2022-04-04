@@ -18,7 +18,7 @@ export default function TeacherFilterItem(props) {
     )}>
       <View style={styles.viewItem1}>
         <View style={styles.viewItem2}>
-          <Image source={{ uri: item.teacherPhoto }} style={styles.image}></Image>
+          <Image source={item.teacherPhoto ? { uri: item.teacherPhoto } : require('../../Static/Image/image.png')} style={styles.image}></Image>
         </View>
         <View style={styles.view1}>
           <Text style={styles.textTeacher}>{item.teacherName}</Text>
