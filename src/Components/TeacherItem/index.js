@@ -13,7 +13,8 @@ export default function TeacherItem(props) {
           itemNameTeacher: item.fullname,
           itemPositionName: item.position,
           itemPhoto:item.photo,
-          itemId:item.id
+          itemId:item.id,
+          itemVideo:item.video_id
         }
         
         

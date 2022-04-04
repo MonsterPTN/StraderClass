@@ -7,7 +7,7 @@ import ListCourseNew from '../../Components/ListCourseNew'
 
 
 
-const NewHotScreen = () => {
+const NewHotScreen = (props) => {
     const [dataNewCourse, setDataNewCourse] = useState([]);
 
     useEffect(() => {
@@ -35,7 +35,8 @@ const NewHotScreen = () => {
             <ScrollView>
                 <StatusBar style="auto" />
                 <ListCourseNew
-                    data={dataNewCourse} />
+                    data={dataNewCourse}
+                    navigation={props.navigation} />
             </ScrollView>
         </View>
     );

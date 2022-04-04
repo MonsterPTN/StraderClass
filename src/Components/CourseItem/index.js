@@ -14,7 +14,8 @@ export default function CourseItem(props) {
                 itemNameVideo: item.name,
                 itemPhotoTeacher: item.teacherPhoto,
                 itemNameTeacher: item.teacherName,
-                itemId:item.id
+                itemId:item.id,
+
             }
 
             )} style={props.style}>

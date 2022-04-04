@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, SafeAreaView, ScrollView, StatusBar, StyleSheet, TextInput, FlatList, Image, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
+import ListTeacherFilter from '../../Components/ListTeacherFilter'
 
 const ListTeacherScreen = (props) => {
     const [dataFilter, setDataFilter] = useState([]);
@@ -8,12 +9,13 @@ const ListTeacherScreen = (props) => {
     const [isloading, setisLoading] = useState(true);
     const [values, setValue] = useState('0')
     useEffect(() => {
-        getListFilter();
-        getListChooseFilter();
-        return () => {
-    
-        }
+        getListFilter()
       }, [])
+
+      useEffect(() => {
+        getListChooseFilter()
+      }, [values])
+
 
       getListFilter = () => {
         const apiURL = 'https://traderclass.vn/api/course-category';
@@ -40,29 +42,11 @@ const ListTeacherScreen = (props) => {
     renderItem = ({ item, index }) => {
         return (
             <View style={styles.viewItem}>
-                <TouchableOpacity onPress={()=>getListChooseFilter()}
+                <TouchableOpacity onPress={()=>setValue(item.id)}
                 >
                     <Text style={styles.textItem}>{item.title}</Text>
                 </TouchableOpacity>
             </View>
-        )
-    }
-    renderListTeacher = ({ item, index }) => {
-        return (
-
-            <View style={styles.viewTeacher}>
-                <View style={styles.viewItem1}>
-                    <View style={styles.viewItem2}>
-                        <Image source={{uri:item.teacherPhoto}} style={styles.image}></Image>
-                    </View>
-                    <View style={{ justifyContent: 'center', marginLeft: 24 }}>
-                        <Text style={styles.textTeacher}>{item.teacherName}</Text>
-                        <Text style={styles.textTitleTeacher}>{item.title}</Text>
-
-                    </View>
-                </View>
-            </View>
-
         )
     }
     return (
@@ -82,9 +66,9 @@ const ListTeacherScreen = (props) => {
             <ScrollView style={styles.view3}>
                 <Text style={styles.textTitle}>RECOMMENDED</Text>
 
-                <FlatList
+                <ListTeacherFilter
                     data={dataChooseFilter}
-                    renderItem={renderListTeacher}
+                    navigation = {props.navigation}
                 />
             </ScrollView>
         </View>

@@ -6,15 +6,14 @@ import Num1Icon from '../../Icons/Num1Icon'
 import Num2Icon from '../../Icons/Num2Icon'
 import Num3Icon from '../../Icons/Num3Icon'
 import { styles } from "./styles";
+import GoBack from '../../Components/GoBack'
 
-const IntroduceScreen = ({ navigation }) => {
+const IntroduceScreen = (props) => {
     return (
         <View style={styles.viewAll}>
             <View style={styles.header}>
 
-                <TouchableOpacity style={{ paddingLeft: 6 }} onPress={() => navigation.navigate('UserScreen')}>
-                    <BackIcon style={styles.iconHeader} />
-                </TouchableOpacity>
+            <GoBack navigation={props.navigation}/>
                 <Text style={styles.textHeader}>Referral</Text>
                 <View style={{ paddingLeft: 6 }}><NonIcon style={styles.iconHeader} /></View>
             </View>

@@ -2,7 +2,7 @@ import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from '../Screen/Home';
-import NewHotScreen from '../Screen/NewHot';
+import NewHot from '../Screen/NewHot';
 import Search from '../Screen/Search'
 import ListTeacher from '../Screen/ListTeacher';
 import MyList from '../Screen/MyList'
@@ -100,7 +100,7 @@ const NewHotScreenStack = ({ navigation }) => (
             fontWeight: 'bold'
         }
     }}>
-        <NewHotStack.Screen name="NewHot" component={NewHotScreen} options={{
+        <NewHotStack.Screen name="NewHot" component={NewHot} options={{
             title: 'NewHot', headerShown: false
         }} />
     </NewHotStack.Navigator>

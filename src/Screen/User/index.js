@@ -13,13 +13,14 @@ import LogOutIcon from '../../Icons/LogOutIcon'
 import TempIcon from '../../Icons/TempIcon'
 import LanguageIcon from '../../Icons/LanguageIcon'
 import { styles } from "./styles";
+import GoBack from '../../Components/GoBack'
 const UserScreen = (props) => {
     return (
         <View style={styles.viewMain}>
             <View style={styles.header}>
 
-                <TouchableOpacity style={{ paddingLeft: 6 }} >
-                    <BackIcon style={styles.iconHeader} />
+                <TouchableOpacity style={{ paddingLeft: 6 }}  onPress={() => props.navigation.goBack()}>
+                   <GoBack navigation={props.navigation}/>
                 </TouchableOpacity>
                 <Text style={styles.textHeader}>User</Text>
                 <View style={{ paddingLeft: 6 }}><NonIcon style={styles.iconHeader} /></View>

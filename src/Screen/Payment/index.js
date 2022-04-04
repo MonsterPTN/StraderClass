@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, TextInput } from "react-native";
-import BackIcon from '../../Icons/BackIcon'
+import { View, Text, TouchableOpacity, StyleSheet, TextInput,SafeAreaView } from "react-native";
 import NonIcon from '../../Icons/NonIcon'
 import VNDIcon from '../../Icons/VNDIcon'
 import PaymentWalletIcon from '../../Icons/PaymentWalletIcon'
@@ -8,11 +7,13 @@ import DouTickIcon from '../../Icons/DouTickIcon'
 import RitghtOrangeIcon from '../../Icons/RitghtOrangeIcon'
 import { ScrollView } from "react-native-gesture-handler";
 import { styles } from "./styles";
+import GoBack from '../../Components/GoBack'
+import { Colors } from "../../Until/Colors";
 const RadioButton = ({ onPress, selected, children }) => {
     return (
 
 
-        <View style={{ backgroundColor: '#272A38', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginVertical: 5, paddingVertical: 10, borderRadius: 5 }}>
+        <View style={{ backgroundColor: Colors.third, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginVertical: 5, paddingVertical: 10, borderRadius: 5 }}>
             <View flexDirection={'row'} marginLeft={5}>
                 <TouchableOpacity onPress={onPress}>
                     <PaymentWalletIcon />
@@ -30,7 +31,7 @@ const RadioButton = ({ onPress, selected, children }) => {
     );
 };
 
-const PaymentScreen = ({ navigation }) => {
+const PaymentScreen = (props) => {
     const [isLiked, setIsLiked] = useState([
         { id: 1, value: true, name: "Google Play", name2: "Support payment via Momo, ZaloPay", selected: true },
         { id: 2, value: false, name: "Bank card", name2: "MasterCard, Visa, JCB", selected: false }
@@ -44,11 +45,9 @@ const PaymentScreen = ({ navigation }) => {
         setIsLiked(updatedState);
     };
     return (
-        <View style={styles.viewMain}>
+        <SafeAreaView style={styles.viewMain}>
             <View style={styles.view5}>
-                <TouchableOpacity style={{ paddingLeft: 6 }} onPress={() => navigation.navigate('Lesturers')}>
-                    <BackIcon style={styles.iconHeader} />
-                </TouchableOpacity>
+            <GoBack navigation={props.navigation}/>
                 <Text style={styles.textHeader}>Payment</Text>
                 <View style={{ paddingLeft: 6 }}><NonIcon style={styles.iconHeader} /></View>
             </View>
@@ -131,7 +130,7 @@ const PaymentScreen = ({ navigation }) => {
                 </Text>
             </TouchableOpacity>
             </ScrollView>
-        </View>
+        </SafeAreaView>
     )
 }
 export default PaymentScreen;

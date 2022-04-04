@@ -12,7 +12,7 @@ import BackIcon from '../../Icons/BackIcon'
 import NonIcon from '../../Icons/NonIcon'
 import Vnd from '../../Icons/VNDIcon'
 import { styles } from './styles';
-
+import GoBack from '../../Components/GoBack'
 const MembershipScreen = (props) => {
   //khai bao chuyen man 
   const [screen, setScreen] = useState(1)
@@ -63,9 +63,7 @@ const MembershipScreen = (props) => {
   return (
     <View style={{ backgroundColor: "#171921", flex: 1 }}>
       <View style={{ flexDirection: "row", justifyContent: 'space-between', alignItems: 'center', marginVertical: 25, padding: 10 }}>
-       <TouchableOpacity onPress={()=>navigation.navigate('UserScreen')}>
-       <BackIcon />
-       </TouchableOpacity>
+      <GoBack navigation={props.navigation}/>
         <Text style={styles.hetder}>Membership package</Text>
         <NonIcon />
       </View>
