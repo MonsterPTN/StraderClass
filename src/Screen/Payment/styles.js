@@ -67,7 +67,7 @@ export const styles = StyleSheet.create({
         backgroundColor: "#F8F8F8",
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: "#E6E6E6",
+        borderColor: Colors.primary,
         alignItems: "center",
         justifyContent: "center",
         marginRight: 5
@@ -76,7 +76,7 @@ export const styles = StyleSheet.create({
         height: 14,
         width: 14,
         borderRadius: 7,
-        backgroundColor: "#98CFB6",
+        backgroundColor: Colors.second,
 
     },
     radioButtonText: {

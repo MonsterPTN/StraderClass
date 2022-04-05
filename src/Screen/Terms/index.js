@@ -1,31 +1,19 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from "react-native"
-import BackIcon from '../../Icons/BackIcon'
 import NonIcon from '../../Icons/NonIcon'
 import DownIcon from '../../Icons/DownIcon'
-const TermsConditionsScreen = ({ navigation }) => {
+import GoBack from '../../Components/GoBack'
+const TermsConditionsScreen = (props) => {
     const [term1, setTerm1] = useState(true);
     const [term2, setTerm2] = useState(true);
     const [term3, setTerm3] = useState(true);
     const [term4, setTerm4] = useState(true);
-    const [term5, setTerm5] = useState(true);
-    const [term6, setTerm6] = useState(true);
-    const [term7, setTerm7] = useState(true);
-    const [term8, setTerm8] = useState(true);
-    const [term9, setTerm9] = useState(true);
-    const [term10, setTerm10] = useState(true);
-    const [term11, setTerm11] = useState(true);
-    const [term12, setTerm12] = useState(true);
-    const [term13, setTerm13] = useState(true);
-    const [term14, setTerm24] = useState(true);
 
     return (
         <View style={{ flex: 1, backgroundColor: '#171921', paddingTop: 15,paddingHorizontal:15 }}>
 
             <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 10, justifyContent: 'space-between' }}>
-                <TouchableOpacity style={{ paddingLeft: 6 }} onPress={() => navigation.navigate('UserScreen')}>
-                    <BackIcon style={styles.iconHeader} />
-                </TouchableOpacity>
+            <GoBack navigation={props.navigation}/>
                 <Text style={styles.textHeader}>Term & Conditions</Text>
                 <View style={{ paddingLeft: 6 }}><NonIcon style={styles.iconHeader} /></View>
             </View>

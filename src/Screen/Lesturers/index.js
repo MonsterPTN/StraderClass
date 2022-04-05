@@ -12,6 +12,7 @@ import { styles } from "./styles";
 import { scale } from "react-native-size-matters";
 import YoutubePlayer from 'react-native-youtube-iframe';
 import ListCourseByTeacher from '../../Components/ListCourseByTeacher'
+import GoBack from '../../Components/GoBack'
 export default function Lesturers({ route, navigation }) {
     const [dataCourse, setDataCourse] = useState([]);
     useEffect(() => {
@@ -40,7 +41,7 @@ export default function Lesturers({ route, navigation }) {
         if (route.params?.itemId) {
         }
 
-    }, [route.params?.itemNameTeacher, route.params?.itemPositionName, route.params?.itemPhoto, route.params?.itemId]);
+    }, [route.params?.itemNameTeacher, route.params?.itemPositionName, route.params?.itemPhoto, route.params?.itemId, route.params?.itemVideo]);
     const renderItem2 = ({ item }) => {
         return (
             <View style={styles.viewitem2}>
@@ -56,9 +57,7 @@ export default function Lesturers({ route, navigation }) {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.header}>
-                <TouchableOpacity>
-                    <BackIcon />
-                </TouchableOpacity>
+            <GoBack navigation={navigation}/>
                 <Text style={styles.textHeader}>Lesturers</Text>
                 <View style={{ paddingRight: 15 }}>
                     {/* <TouchableOpacity onPress={()=>navigation.navigate('UserScreen')}>
@@ -143,6 +142,7 @@ export default function Lesturers({ route, navigation }) {
 
                         <TouchableOpacity
                             style={styles.touch4}
+                            onPress = {()=> navigation.navigate('Payment')}
                         >
                             <Text style={styles.regist}>Regist now</Text>
                         </TouchableOpacity>
@@ -167,7 +167,7 @@ export default function Lesturers({ route, navigation }) {
                             <YoutubePlayer
                                 height={scale(250)}
                                 play={true}
-                                videoId={'lZYOp1B_OZs'}
+                                videoId={route.params?.itemVideo}
                             />
                         </View>
                     </View>

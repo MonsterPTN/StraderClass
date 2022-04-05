@@ -5,13 +5,12 @@ import NonIcon from '../../Icons/NonIcon'
 import SaveIcon from '../../Icons/SaveIcon'
 import { styles } from "./styles";
 import { Colors } from "../../Until/Colors";
-const UpdateEmailScreen = () => {
+import GoBack from '../../Components/GoBack'
+const UpdateEmailScreen = (props) => {
     return (
         <View style={styles.viewMain}>
             <View style={styles.view1}>
-                <TouchableOpacity style={{ paddingLeft: 6 }} onPress={() => navigation.navigate('UserScreen')}>
-                    <BackIcon style={styles.iconHeader} />
-                </TouchableOpacity>
+            <GoBack navigation={props.navigation}/>
                 <Text style={styles.textHeader}>Update Email</Text>
                 <View style={{ paddingLeft: 6 }}><NonIcon style={styles.iconHeader} /></View>
             </View>

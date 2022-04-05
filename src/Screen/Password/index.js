@@ -4,14 +4,13 @@ import BackIcon from '../../Icons/BackIcon'
 import NonIcon from '../../Icons/NonIcon'
 import SaveIcon from '../../Icons/SaveIcon'
 import { styles } from "./styles";
-const UpdatePasswordScreen = ({ navigation }) => {
+import GoBack from '../../Components/GoBack'
+const UpdatePasswordScreen = (props) => {
     return (
         <View style={{ flex: 1, backgroundColor: '#171921', padding: 15 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', paddingTop: 25, justifyContent: 'space-between' }}>
-                <TouchableOpacity style={{ paddingLeft: 6 }} onPress={() => navigation.navigate('UserScreen')}>
-                    <BackIcon style={styles.iconHeader} />
-                </TouchableOpacity>
-                <Text style={styles.textHeader}>Update Password</Text>
+            <GoBack navigation={props.navigation}/>
+                <Text style={styles.textHeader}>Change Password</Text>
                 <View style={{ paddingLeft: 6 }}><NonIcon style={styles.iconHeader} /></View>
             </View>
             <View style={{ marginTop: 42 }}>

@@ -23,16 +23,7 @@ export const styles = StyleSheet.create({
         paddingLeft: 15, paddingRight: 15, paddingTop: 5, paddingBottom: 5,
 
     },
-    textTeacher: {
-        fontSize: 20,
-        fontWeight: 'normal',
-        color: Colors.fourth
-    },
-    textTitleTeacher: {
-        fontSize: 12,
-        fontWeight: 'normal',
-        color: Colors.sixth
-    },
+
     textTitle: {
         color: Colors.second,
         fontSize: 16,
@@ -53,31 +44,16 @@ export const styles = StyleSheet.create({
         paddingTop: 5,
         paddingBottom: 5
     },
-    viewTeacher: {
-        flexDirection: 'row',
-        marginBottom: 6,
-        backgroundColor: Colors.fifth,
-        justifyContent: 'space-between'
-    },
+
     viewItem: {
         flexDirection: 'row',
         marginBottom: 6,
         justifyContent: 'space-between',
         height: 50
     },
-    viewItem1: {
-        flexDirection: 'row',
-        height: 108
-    },
-    viewItem2: {
-        height: 108,
-        width: 76,
-        borderRadius: 5
-    },
-    image: {
-        height: "100%",
-        width: "100%"
-    },
+
+
+
     view1: {
         flexDirection: 'row',
         alignItems: 'center',
