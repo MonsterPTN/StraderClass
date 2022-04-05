@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { Colors } from '../../Until/Colors';
 
 export const styles = StyleSheet.create({
     ResetIconStyle: {
@@ -19,7 +20,6 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 15,
         borderRadius: 30,
-        marginTop: 50,
 
     },
     messageText2: {
@@ -48,16 +48,16 @@ export const styles = StyleSheet.create({
 
     },
     message: {
-        color: '#9A9A9A',
+        color: Colors.third,
         fontSize: 14,
         fontWeight: '500',
         marginHorizontal: 45,
         textAlign: 'center',
-        marginBottom: 70,
+        marginBottom: 4,
     },
 
     forgotText: {
-        marginBottom: 25,
+        marginBottom: 22,
         textAlign: 'center',
         color: '#FF8600',
         fontSize: 33,

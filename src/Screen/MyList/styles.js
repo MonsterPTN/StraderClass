@@ -13,11 +13,10 @@ export const styles = StyleSheet.create({
 
     },
     textTitle: {
-        color: Colors.primary,
+        color: Colors.second,
         fontSize: 16,
         fontFamily: Fonts.font_700,
         fontWeight: 'bold',
-
         marginTop: 25,
         marginBottom: 16
     },
