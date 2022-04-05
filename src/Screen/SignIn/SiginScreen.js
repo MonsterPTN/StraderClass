@@ -43,7 +43,7 @@ export default function App({ navigation }) {
                     Alert.alert("message", resJson.msg)
 
                 } else {
-                    setToken({ loading: false, userToken: resJson.data.token})
+                    setToken({ loading: false, userToken: resJson.data})
                     navigation.navigate('MainTabScreen')
 
                 }
