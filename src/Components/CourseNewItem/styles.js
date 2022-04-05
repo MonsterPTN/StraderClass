@@ -5,9 +5,8 @@ import { scale } from "react-native-size-matters";
 
 export const styles = StyleSheet.create({
     imgBackground: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'cover'
+        height: "100%",
+        justifyContent: 'flex-end'
     },
     imageAvt: {
         height: scale(50),
@@ -55,8 +54,7 @@ export const styles = StyleSheet.create({
         fontFamily: 'Poppins',
     },
     view1: {
-        height: 180,
-        width: 384
+        height: 180,    
     },
     view2: {
         flexDirection: 'row',

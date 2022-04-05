@@ -1,12 +1,15 @@
 import { StyleSheet } from "react-native";
+import { Colors } from "../../Until/Colors";
+import {Fonts} from '../../Until/Fonts'
 export const styles = StyleSheet.create({
     textWR: {
-        color: '#FFFFFF',
+        color: Colors.fourth,
         fontWeight: '500'
     },
     textBF: {
         color: '#FFFFFF',
-        fontWeight: '500'
+        fontWeight: '500',
+        fontFamily:Fonts.font_700
     },
     iconBack: {
         paddingVertical: 35,
@@ -19,7 +22,7 @@ export const styles = StyleSheet.create({
 
     },
     createText: {
-        marginBottom: 70,
+        marginBottom: 50,
         textAlign: 'center',
         color: '#FF8600',
         fontSize: 33,

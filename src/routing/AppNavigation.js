@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import Home from '../Screen/Home';
-import NewHot from '../Screen/NewHot';
-import Search from '../Screen/Search'
-import ListTeacher from '../Screen/ListTeacher';
-import MyList from '../Screen/MyList'
+// import { createStackNavigator } from "@react-navigation/stack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MainTabScreen from "../routing/MainTabScreen";
 import TestScreen from "../Screen/TestScreen";
 import User from "../Screen/User";
@@ -18,7 +14,6 @@ import Terms from '../Screen/Terms'
 import Lesturers from "../Screen/Lesturers";
 import Payment from '../Screen/Payment'
 import Watch from '../Screen/Watch'
-
 import StartScreen from '../Screen/Start/StartScreen'
 import SiginScreen from '../Screen/SignIn/SiginScreen'
 import CreateAccount from '../Screen/CreateAccount/CreateAccount'
@@ -27,7 +22,7 @@ import VerifyPhone from '../Screen/VerifyPhone/VerifyPhone'
 import VerifyOTP from '../Screen/VerifyOTP/VerityOTP'
 
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function AppNavigation () {
         return (
@@ -35,7 +30,6 @@ export default function AppNavigation () {
                 <Stack.Navigator
                     screenOptions={{ headerShown: false }}
                     initialRouteName={'StartScreen'}>
-                        
                     <Stack.Screen name="StartScreen" component={StartScreen} />
                     <Stack.Screen name="SiginScreen" component={SiginScreen} />
                     <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
@@ -43,11 +37,6 @@ export default function AppNavigation () {
                     <Stack.Screen name="VerifyPhone" component={VerifyPhone} />
                     <Stack.Screen name="VerifyOTP" component={VerifyOTP} />
                     <Stack.Screen name="MainTabScreen" component={MainTabScreen} />
-                    <Stack.Screen name="Home" component={Home} />
-                    <Stack.Screen name="Search" component={Search} />
-                    <Stack.Screen name="ListTeacher" component={ListTeacher} />
-                    <Stack.Screen name="MyList" component={MyList} />
-                    <Stack.Screen name="NewHot" component={NewHot} />
                     <Stack.Screen name="TestScreen" component={TestScreen} />
                     <Stack.Screen name="User" component={User} />
                     <Stack.Screen name="Profile" component={Profile} />
@@ -58,6 +47,7 @@ export default function AppNavigation () {
                     <Stack.Screen name="Terms" component={Terms} />
                     <Stack.Screen name="Lesturers" component={Lesturers} />
                     <Stack.Screen name="Watch" component={Watch} />
+                    <Stack.Screen name="Payment" component={Payment} />
                 </Stack.Navigator>
             </NavigationContainer>
         )

@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     input: {
-        borderWidth: 1,
+        borderWidth: 2,
         width: '90%',
         paddingVertical: 15,
         borderRadius: 30,
@@ -72,12 +72,10 @@ export const styles = StyleSheet.create({
         backgroundColor: '#171921',
     },
     viewTop: {
-        flex: 2,
+        flex:2,
         backgroundColor: '#171921',
     },
     viewBot: {
-        flex: 3,
-        backgroundColor: '#000000',
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
     }

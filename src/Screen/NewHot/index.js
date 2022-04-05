@@ -7,9 +7,9 @@ import ListCourseNew from '../../Components/ListCourseNew'
 
 
 
-const NewHotScreen = () => {
+const NewHotScreen = (props) => {
     const [dataNewCourse, setDataNewCourse] = useState([]);
-
+    const [isloading, setisLoading] = useState(true);
     useEffect(() => {
         getListNewCourse();
         return () => {
@@ -32,11 +32,12 @@ const NewHotScreen = () => {
             <View style={styles.view2}>
                 <Text style={styles.textHeader}>New & Hot</Text>
             </View>
-            <ScrollView>
+            <View>
                 <StatusBar style="auto" />
                 <ListCourseNew
-                    data={dataNewCourse} />
-            </ScrollView>
+                    data={dataNewCourse}
+                    navigation={props.navigation} />
+            </View>
         </View>
     );
 

@@ -1,20 +1,26 @@
 import React from "react";
-import { Text, View, SafeAreaView, ScrollView, StatusBar, StyleSheet, TextInput, FlatList, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import BackIcon from '../../Icons/BackIcon'
 import NonIcon from '../../Icons/NonIcon'
 import Num1Icon from '../../Icons/Num1Icon'
 import Num2Icon from '../../Icons/Num2Icon'
 import Num3Icon from '../../Icons/Num3Icon'
 import { styles } from "./styles";
+import GoBack from '../../Components/GoBack'
+import Clipboard from '@react-native-community/clipboard';
 
-const IntroduceScreen = ({ navigation }) => {
+const IntroduceScreen = (props) => {
+    const copy = 'https://traderclass.vn/user'
+    const writeToClipboard = async () => {
+        //To copy the text to clipboard
+        Clipboard.setString(copy);
+        alert('Copied to Clipboard!');
+      };
     return (
         <View style={styles.viewAll}>
             <View style={styles.header}>
 
-                <TouchableOpacity style={{ paddingLeft: 6 }} onPress={() => navigation.navigate('UserScreen')}>
-                    <BackIcon style={styles.iconHeader} />
-                </TouchableOpacity>
+            <GoBack navigation={props.navigation}/>
                 <Text style={styles.textHeader}>Referral</Text>
                 <View style={{ paddingLeft: 6 }}><NonIcon style={styles.iconHeader} /></View>
             </View>
@@ -25,9 +31,9 @@ const IntroduceScreen = ({ navigation }) => {
                 </View>
                 <Image source={require('../../Static/Image/people.png')} style={{ marginTop: 33 }}></Image>
             </View>
-            <View style={styles.viewShare}>
-                <Text style={styles.text1}>https://traderclass.vn/</Text>
-            </View>
+            <TouchableOpacity style={styles.viewShare} onPress={writeToClipboard}>
+                <Text style={styles.text1}>{copy}</Text>
+            </TouchableOpacity>
             <View style={{ marginTop: 16 }}>
                 <Text style={styles.text3}>How it works</Text>
                 <View style={styles.view1}>

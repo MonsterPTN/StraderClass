@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, ImageBackground,Image } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import RectangleIcon from '../../Icons/RectangleIcon';
 import { styles } from "./styles";
@@ -9,11 +9,27 @@ export default function CourseItem(props) {
 
     return (
         <View>
-            <TouchableOpacity style={styles.view1}>
-                <ImageBackground source={{ uri: item.photo }} style={styles.imgBackground}></ImageBackground>
+            <TouchableOpacity style={styles.view1}  onPress={() => props.navigation.navigate('TestScreen', {
+                itemUrlVideo: item.video_id,
+                itemNameVideo: item.name,
+                itemPhotoTeacher: item.teacherPhoto,
+                itemNameTeacher: item.teacherName,
+                itemId:item.id,
+
+            }
+
+            )}>
+                <ImageBackground source={item.photo ? { uri: item.photo } : require('../../Static/Image/image.png')} style={styles.imgBackground}></ImageBackground>
             </TouchableOpacity>
             <View style={styles.view2}>
-                <TouchableOpacity style={styles.touch}>
+                <TouchableOpacity style={styles.touch} onPress = {()=> props.navigation.navigate('Lesturers', {
+                              itemNameTeacher: item.teacherName,
+                              itemPositionName: item.title,
+                              itemPhoto:item.teacherPhoto,
+                              itemId:item.id
+                })
+            
+            }>
                     <View>
                         <Image source={{ uri: item.teacherPhoto }} style={styles.imageAvt}></Image>
                     </View>
@@ -22,7 +38,7 @@ export default function CourseItem(props) {
                         <Text style={styles.textItemVideo}>{item.score} video</Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={{ alignItems: 'center' }} >
+                <TouchableOpacity style={{ alignItems: 'center' }} onPress = {()=> props.navigation.navigate('Payment')} >
                     <Text style={styles.buttonRegistNow}>Regist Now</Text>
                 </TouchableOpacity>
             </View>

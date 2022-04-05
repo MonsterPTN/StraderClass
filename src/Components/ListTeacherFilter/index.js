@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, ImageBackground, } from 'react-native'
-import { styles } from './styles';
-import TeacherItem from '../TeacherItem'
+import TeacherFilterItem from '../TeacherFilterItem'
+import {styles} from './styles'
 
 
-export default function ListTeacher(props) {
+export default function ListTeacherFilter(props) {
     return (
         <View>
             <FlatList
                 data={props.data}
                 renderItem={({index, item}) =>(
-                    <TeacherItem
+                    <TeacherFilterItem
                         navigation = {props.navigation}
                         item = {item}
                         style = {index == 0? styles.firstItem:
@@ -19,7 +19,6 @@ export default function ListTeacher(props) {
                         />
                 )}
                 keyExtractor = {(item) => item.id}
-                horizontal
             />
         </View>
     )

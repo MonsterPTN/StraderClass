@@ -5,8 +5,12 @@ import BackIcon from '../../Icons/BackIcon';
 import NonIcon from '../../Icons/NonIcon';
 import { styles } from "./styles";
 import SaveIcon from '../../Icons/SaveIcon'
+<<<<<<< HEAD
 import { AuthContext } from "../../Redux/AuthContext";
 
+=======
+import GoBack from '../../Components/GoBack'
+>>>>>>> origin/main
 const choosePhotoFromLibrary = () => {
     ImagePicker.openPicker({
         width: 300,
@@ -40,7 +44,7 @@ const takePhotoFromCamra = () => {
 
 
 
-const ProfileScreen = () => {
+const ProfileScreen = (props) => {
     // const refRBSheet = useRef();
     const [modalVisible, setModalVisible] = useState(false);
     const { token } = useContext(AuthContext)
@@ -60,9 +64,7 @@ const ProfileScreen = () => {
     return (
         <View style={styles.viewMain}>
             <View style={styles.header}>
-                <TouchableOpacity style={{ paddingLeft: 6 }}>
-                    <BackIcon style={styles.iconHeader} />
-                </TouchableOpacity>
+            <GoBack navigation={props.navigation}/>
                 <Text style={styles.textHeader}>Account Infomation</Text>
                 <View style={{ paddingLeft: 6 }}><NonIcon style={styles.iconHeader} /></View>
             </View>
