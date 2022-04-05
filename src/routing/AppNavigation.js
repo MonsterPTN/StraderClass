@@ -26,17 +26,11 @@ import ForgotPassword from '../Screen/ForgotPassword/ForgotPassword'
 import VerifyPhone from '../Screen/VerifyPhone/VerifyPhone'
 import VerifyOTP from '../Screen/VerifyOTP/VerityOTP'
 
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import allReducter from '../Redux';
-const store = createStore(allReducter, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const Stack = createStackNavigator();
 
 export default function AppNavigation () {
-    // render() {
         return (
-            <Provider store={store}>
             <NavigationContainer>
                 <Stack.Navigator
                     screenOptions={{ headerShown: false }}
@@ -66,7 +60,5 @@ export default function AppNavigation () {
                     <Stack.Screen name="Watch" component={Watch} />
                 </Stack.Navigator>
             </NavigationContainer>
-            </Provider>
         )
-    // }
 }

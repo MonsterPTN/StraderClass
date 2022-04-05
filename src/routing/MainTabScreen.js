@@ -18,8 +18,6 @@ const ListTeacherStack = createStackNavigator();
 const MyListStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
-import { useSelector, useDispatch } from 'react-redux';
-
 
 
 const MainTabScreen = () => (

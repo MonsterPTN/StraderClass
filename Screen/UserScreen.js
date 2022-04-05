@@ -1,5 +1,12 @@
-import React from "react";
-import { Text, View, SafeAreaView, ScrollView, StatusBar, StyleSheet, TextInput, FlatList, Image, TouchableOpacity } from 'react-native';
+import React, { useContext } from "react";
+import {
+    Text,
+    View,
+    ScrollView,
+    StyleSheet,
+    Image,
+    TouchableOpacity
+} from 'react-native';
 import NonIcon from '../Icon/NonIcon';
 import BackIcon from '../Icon/BackIcon';
 import RightIcon from '../Icon/RightIcon';
@@ -12,9 +19,15 @@ import PinIcon from '../Icon/PinIcon'
 import LogOutIcon from '../Icon/LogOutIcon'
 import TempIcon from '../Icon/TempIcon'
 import TouchHistoryMath from "react-native/Libraries/Interaction/TouchHistoryMath";
+import { AuthContext } from "../src/Redux/AuthContext";
+
 const UserScreen = ({ navigation }) => {
+    const { token } = useContext(AuthContext)
+
     return (
         <View style={{ backgroundColor: '#171921', padding: 15 }}>
+
+            
             <View style={styles.header}>
 
                 <TouchableOpacity style={{ paddingLeft: 6 }} onPress={() => navigation.navigate('MainTabScreen')}>
@@ -32,7 +45,7 @@ const UserScreen = ({ navigation }) => {
                             <View style={{ flexDirection: 'row' }}>
                                 <Image source={require('../Image/imguser.png')} style={styles.imgUser}></Image>
                                 <View style={{ justifyContent: 'center' }}>
-                                    <Text style={styles.nameUser}>Angel Trinh</Text>
+                                    <Text style={styles.nameUser}>{token.userToken}</Text>
                                     <Text style={styles.number}>0366478995</Text>
                                 </View>
                             </View>
@@ -42,7 +55,7 @@ const UserScreen = ({ navigation }) => {
                         </View>
                     </TouchableOpacity>
                     <RectagleLongIcon />
-                    <TouchableOpacity onPress = {()=> navigation.navigate('MembershipScreen')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('MembershipScreen')}>
 
                         <View style={styles.viewTouch}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>

@@ -14,7 +14,6 @@ import ListTopCourse from '../../Components/ListTopCourse';
 import ListCourse from '../../Components/ListTopCourse';
 import ListTopTeacher from '../../Components/ListTeacher'
 import { api_get } from '../../Until/Api'
-import { useSelector, useDispatch } from 'react-redux';
 
 const HomeScreen = (props) => {
   const numberItem = 5
@@ -23,17 +22,6 @@ const HomeScreen = (props) => {
   const [dataTopTeacher, setDataTopTeacher] = useState([]);
   const [dataTop1, setDataTop1] = useState([]);
   const [isloading, setisLoading] = useState(true);
-  const name = useSelector(state=>state.name);
-  useEffect(() => {
-    getListCourse();
-    getListTopCourse();
-    getListTopTeacher();
-    getListTop1();
-    console.log("ten "+name)
-    return () => {
-
-    }
-  }, [])
 
 
 
@@ -119,6 +107,18 @@ const HomeScreen = (props) => {
 
     )
   }
+
+  
+  useEffect(() => {
+    getListCourse();
+    getListTopCourse();
+    getListTopTeacher();
+    getListTop1();
+    return () => {
+
+    }
+  }, [])
+  
   return (
     <View style={{ backgroundColor: '#171921', }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 25, justifyContent: 'space-between' }}>

@@ -1,41 +1,30 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { styles } from './styles'
 
 import {
     SafeAreaView,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
     Text,
-    useColorScheme,
     View,
     TouchableOpacity,
     TextInput,
     Alert
 } from 'react-native';
+import { AuthContext } from '../../Redux/AuthContext';
 
-
-import allReducter from '../../Redux';
-import { createStore } from 'redux';
-import { useSelector, useDispatch } from 'react-redux';
-// import { State } from 'react-native-gesture-handler';
 
 export default function App({ navigation }) {
-    const [email, setEmail] = useState('trader123456@gmail.com');
+    const { setToken } = useContext(AuthContext)
+    const [email, setEmail] = useState('trader999@gmail.com');
     const [password, setPassWord] = useState('kaito123');
-    const Name = useSelector(State => State.name);
-    const tonkon = useSelector(State => State.usertoken);
 
-    const store = createStore(allReducter);
-    const dispatch = useDispatch();
 
     useEffect(() => {
         return () => {
         }
     }, [])
 
-    const getLogin = () => {
+    const getLogin = async () => {
         const apiURL = 'https://traderclass.vn/api/login';
         fetch(apiURL, {
             method: 'POST',
@@ -54,18 +43,14 @@ export default function App({ navigation }) {
                     Alert.alert("message", resJson.msg)
 
                 } else {
-
-                    // store.dispatch({ type: "Login", payload: resJson.data.token })
+                    setToken({ loading: false, userToken: resJson.data.token})
                     navigation.navigate('MainTabScreen')
-
-                    // console.log("name " + resJson.data.token)
-
 
                 }
 
             }).catch((error) => {
                 console.log('Error: ', error);
-            }).finally()
+            })
     }
 
     return (
@@ -103,7 +88,7 @@ export default function App({ navigation }) {
                 </View>
 
                 <View style={styles.viewTouch}>
-                    <TouchableOpacity style={[styles.touchLogin]} onPress={getLogin}>
+                    <TouchableOpacity style={[styles.touchLogin]} onPress={() => getLogin()}>
                         <Text style={[styles.textTouch]}>
                             Log in
                         </Text>
