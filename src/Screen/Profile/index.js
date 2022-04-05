@@ -5,12 +5,9 @@ import BackIcon from '../../Icons/BackIcon';
 import NonIcon from '../../Icons/NonIcon';
 import { styles } from "./styles";
 import SaveIcon from '../../Icons/SaveIcon'
-<<<<<<< HEAD
 import { AuthContext } from "../../Redux/AuthContext";
 
-=======
 import GoBack from '../../Components/GoBack'
->>>>>>> origin/main
 const choosePhotoFromLibrary = () => {
     ImagePicker.openPicker({
         width: 300,
