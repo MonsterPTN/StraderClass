@@ -8,16 +8,17 @@ import {
     View,
     TouchableOpacity,
     TextInput,
-    Alert
+    Alert,
+    ImageBackground
 } from 'react-native';
 import { AuthContext } from '../../Redux/AuthContext';
 
 
 export default function App({ navigation }) {
     const { setToken } = useContext(AuthContext)
-    const [email, setEmail] = useState('trader999@gmail.com');
-    const [password, setPassWord] = useState('kaito123');
-
+    const [email, setEmail] = useState('admin@gmail.com');
+    const [password, setPassWord] = useState('1234567');
+    const { token } = useContext(AuthContext)
 
     useEffect(() => {
         return () => {
@@ -57,9 +58,7 @@ export default function App({ navigation }) {
 
 
         <SafeAreaView style={styles.safeview}>
-            <View style={styles.viewTop}>
-            </View>
-
+            <ImageBackground source={require('../../Static/Image/images.jpg')} style = {{height:'100%',flex:1,justifyContent:'center'}} imageStyle = {{height:'100%'}}>
             <View style={styles.viewBot}>
                 <View>
                     <Text style={styles.welcomeText}>Welcome back</Text>
@@ -120,6 +119,8 @@ export default function App({ navigation }) {
 
                 </View>
             </View>
+            </ImageBackground>
+            
 
         </SafeAreaView>
     );

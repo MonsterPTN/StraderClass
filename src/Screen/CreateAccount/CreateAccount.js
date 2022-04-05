@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { styles } from './styles'
+import {Colors} from '../../Until/Colors'
 
 import {
     SafeAreaView,
@@ -73,7 +74,7 @@ export default function App({ navigation }) {
                         onChangeText={setFullname}
                         style={styles.input}
                         placeholder="UserName..."
-                        placeholderTextColor={'#FF8600'}
+                        placeholderTextColor={Colors.second}
                     >
 
                     </TextInput>

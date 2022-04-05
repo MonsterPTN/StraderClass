@@ -22,7 +22,7 @@ import VerifyPhone from '../Screen/VerifyPhone/VerifyPhone'
 import VerifyOTP from '../Screen/VerifyOTP/VerityOTP'
 
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function AppNavigation () {
         return (
@@ -37,11 +37,6 @@ export default function AppNavigation () {
                     <Stack.Screen name="VerifyPhone" component={VerifyPhone} />
                     <Stack.Screen name="VerifyOTP" component={VerifyOTP} />
                     <Stack.Screen name="MainTabScreen" component={MainTabScreen} />
-                    <Stack.Screen name="Home" component={Home} />
-                    <Stack.Screen name="Search" component={Search} />
-                    <Stack.Screen name="ListTeacher" component={ListTeacher} />
-                    <Stack.Screen name="MyList" component={MyList} />
-                    <Stack.Screen name="NewHot" component={NewHot} />
                     <Stack.Screen name="TestScreen" component={TestScreen} />
                     <Stack.Screen name="User" component={User} />
                     <Stack.Screen name="Profile" component={Profile} />
@@ -52,6 +47,7 @@ export default function AppNavigation () {
                     <Stack.Screen name="Terms" component={Terms} />
                     <Stack.Screen name="Lesturers" component={Lesturers} />
                     <Stack.Screen name="Watch" component={Watch} />
+                    <Stack.Screen name="Payment" component={Payment} />
                 </Stack.Navigator>
             </NavigationContainer>
         )
