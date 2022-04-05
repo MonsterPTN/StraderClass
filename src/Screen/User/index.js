@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text, View, SafeAreaView, ScrollView, StatusBar, StyleSheet, TextInput, FlatList, Image, TouchableOpacity } from 'react-native';
 import NonIcon from '../../Icons/NonIcon';
 import BackIcon from '../../Icons/BackIcon';
@@ -14,9 +14,13 @@ import TempIcon from '../../Icons/TempIcon'
 import LanguageIcon from '../../Icons/LanguageIcon'
 import { styles } from "./styles";
 import GoBack from '../../Components/GoBack'
+import { AuthContext } from "../../Redux/AuthContext";
 const UserScreen = (props) => {
+    const { token } = useContext(AuthContext)
+
     return (
         <View style={styles.viewMain}>
+            {console.log(token)}
             <View style={styles.header}>
 
                 <TouchableOpacity style={{ paddingLeft: 6 }}  onPress={() => props.navigation.goBack()}>
@@ -28,13 +32,13 @@ const UserScreen = (props) => {
             <ScrollView style={{ marginBottom: 25 }} >
 
                 <View style={styles.view1}>
-                    <TouchableOpacity onPress={()=> props.navigation.navigate('Profile')}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('Profile')}>
 
                         <View style={styles.viewTouch}>
                             <View style={{ flexDirection: 'row' }}>
                                 <Image source={require('../../Static/Image/imguser.png')} style={styles.imgUser}></Image>
                                 <View style={styles.view2}>
-                                    <Text style={styles.nameUser}>Angel Trinh</Text>
+                                    <Text style={styles.nameUser}>{token.userToken}</Text>
                                     <Text style={styles.number}>0366478995</Text>
                                 </View>
                             </View>
@@ -44,7 +48,7 @@ const UserScreen = (props) => {
                         </View>
                     </TouchableOpacity>
                     <RectagleLongIcon />
-                    <TouchableOpacity onPress={()=> props.navigation.navigate('Membership')}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('Membership')}>
 
                         <View style={styles.viewTouch}>
                             <View style={styles.view3}>
@@ -60,7 +64,7 @@ const UserScreen = (props) => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.view4}>
-                    <TouchableOpacity  onPress={()=> props.navigation.navigate('Referall')}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('Referall')}>
 
                         <View style={styles.viewTouch}>
                             <View style={styles.view3}>
@@ -75,7 +79,7 @@ const UserScreen = (props) => {
                         </View>
                     </TouchableOpacity>
                     <RectagleLongIcon />
-                    <TouchableOpacity onPress={()=> props.navigation.navigate('UpdateEmail')}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('UpdateEmail')}>
 
                         <View style={styles.viewTouch}>
                             <View style={styles.view3}>
@@ -91,7 +95,7 @@ const UserScreen = (props) => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.view4}>
-                    <TouchableOpacity onPress={()=> props.navigation.navigate('Password')}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('Password')}>
 
                         <View style={styles.viewTouch}>
                             <View style={styles.view3}>
@@ -126,7 +130,7 @@ const UserScreen = (props) => {
 
                         <View style={styles.viewTouch}>
                             <View style={styles.view3}>
-                                <LanguageIcon  />
+                                <LanguageIcon />
                                 <View style={styles.view2}>
                                     <Text style={styles.textTitle}>Language</Text>
                                 </View>
@@ -137,7 +141,7 @@ const UserScreen = (props) => {
                         </View>
                     </TouchableOpacity>
                     <RectagleLongIcon />
-                    <TouchableOpacity onPress={()=> props.navigation.navigate('Terms')}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('Terms')}>
                         <View style={styles.viewTouch}>
                             <View style={styles.view3}>
                                 <TempIcon />

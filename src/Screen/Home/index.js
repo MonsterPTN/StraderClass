@@ -95,6 +95,18 @@ const HomeScreen = (props) => {
 
     )
   }
+
+  
+  useEffect(() => {
+    getListCourse();
+    getListTopCourse();
+    getListTopTeacher();
+    getListTop1();
+    return () => {
+
+    }
+  }, [])
+  
   return (
     <View style={{ backgroundColor: Colors.primary }}>
       <View style={styles.view3}>

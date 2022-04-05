@@ -19,7 +19,10 @@ const ListTeacherStack = createNativeStackNavigator();
 const MyListStack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
+
+
 const MainTabScreen = () => (
+   
     <Tab.Navigator initialRouteName="Home" activeColor="white">
     <Tab.Screen
       name="HomeScreen"
