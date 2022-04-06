@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { Colors } from '../../Until/Colors'
 
 export const styles = StyleSheet.create({
     viewIcon: {
@@ -6,23 +7,23 @@ export const styles = StyleSheet.create({
         alignItems: 'center'
     },
     textTouchSI: {
-        color: '#000000',
+        color: Colors.fifth,
         fontSize: 14,
         fontWeight: '700',
     },
     textTouchFB: {
-        color: '#FFFFFF',
+        color: Colors.fourth,
         fontSize: 14,
         fontWeight: '700',
     },
 
     textTouchGG: {
-        color: '#000000',
+        color: Colors.fifth,
         fontSize: 14,
         fontWeight: '700',
     },
     textTouchAP: {
-        color: '#FFFFFF',
+        color: Colors.fourth,
         fontSize: 14,
         fontWeight: '700',
     },
@@ -30,11 +31,11 @@ export const styles = StyleSheet.create({
     slogan: {
         fontSize: 40,
         fontWeight: '700',
-        color: '#FFFFFF',
+        color: Colors.fourth,
 
     },
     touchSI: {
-        backgroundColor: '#FF8600',
+        backgroundColor: Colors.second,
         margin: 7,
         width: '90%',
         alignItems: 'center',
@@ -47,7 +48,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 15,
         borderRadius: 30,
-        backgroundColor: '#2F79FE',
+        backgroundColor: Colors.nineth,
     },
     touchAP: {
         margin: 7,
@@ -55,7 +56,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 15,
         borderRadius: 30,
-        backgroundColor: '#808080',
+        backgroundColor: Colors.tenth,
     },
     touchGG: {
         margin: 7,
@@ -63,11 +64,11 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 15,
         borderRadius: 30,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: Colors.fourth,
     },
     safeview: {
         flex: 1,
-        backgroundColor: '#171921',
+        backgroundColor: Colors.primary,
     },
     viewText: {
         flex: 2,

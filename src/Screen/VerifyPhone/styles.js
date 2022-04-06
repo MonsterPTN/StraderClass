@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { Colors } from '../../Until/Colors'
 
 export const styles = StyleSheet.create({
     viewBot: {
@@ -7,7 +8,7 @@ export const styles = StyleSheet.create({
         marginBottom: 10,
     },
     textOW: {
-        color: '#FFFFFF',
+        color: Colors.fourth,
         fontWeight: '500'
     },
     container: {
@@ -20,21 +21,21 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         borderTopRightRadius: 30,
         borderBottomRightRadius: 30,
-        backgroundColor: '#272A38',
+        backgroundColor: Colors.third,
         borderWidth: 1,
-        borderColor: '#FF8600',
+        borderColor: Colors.second,
     },
     textinput: {
-        backgroundColor: '#272A38',
+        backgroundColor: Colors.third,
         height: 45,
-        color: '#FFFFFF',
+        color: Colors.fourth,
     },
     flagbutton: {
-        backgroundColor: '#272A38',
+        backgroundColor: Colors.third,
         borderTopLeftRadius: 30,
         borderBottomLeftRadius: 30,
         borderWidth: 1,
-        borderColor: '#FF8600',
+        borderColor: Colors.second,
     },
 
     viewTextTop: {
@@ -51,12 +52,12 @@ export const styles = StyleSheet.create({
 
     },
     textSignup: {
-        color: '#FF8600',
+        color: Colors.second,
         fontWeight: '500',
         marginLeft: 5,
     },
     message: {
-        color: '#9A9A9A',
+        color: Colors.twelveth,
         fontSize: 14,
         fontWeight: '500',
         marginHorizontal: 45,
@@ -66,7 +67,7 @@ export const styles = StyleSheet.create({
     verifyText: {
         marginBottom: 25,
         textAlign: 'center',
-        color: '#FF8600',
+        color: Colors.second,
         fontSize: 33,
         fontWeight: '600',
         marginHorizontal: 30,
@@ -80,15 +81,15 @@ export const styles = StyleSheet.create({
         width: '90%',
         paddingVertical: 15,
         borderRadius: 30,
-        backgroundColor: '#272A38',
-        borderColor: '#FF8600',
+        backgroundColor: Colors.third,
+        borderColor: Colors.second,
         paddingHorizontal: 25,
-        color: '#FF8600',
+        color: Colors.second,
         margin: 10,
 
     },
     textTouchSend: {
-        color: '#000000',
+        color: Colors.fifth,
         fontSize: 14,
         fontWeight: '700',
     },
@@ -96,7 +97,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     touchSend: {
-        backgroundColor: '#FF8600',
+        backgroundColor: Colors.second,
         width: '100%',
         alignItems: 'center',
         paddingVertical: 15,
@@ -104,7 +105,7 @@ export const styles = StyleSheet.create({
     },
     safeview: {
         flex: 1,
-        backgroundColor: '#000000',
+        backgroundColor: Colors.fifth,
     },
 
 });
