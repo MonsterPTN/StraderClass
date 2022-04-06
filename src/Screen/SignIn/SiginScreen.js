@@ -41,11 +41,12 @@ export default function App({ navigation }) {
             .then((res) => res.json())
             .then((resJson) => {
                 if (!resJson.status) {
-                    Alert.alert("message", resJson.msg)
+                    Alert.alert("Message", resJson.msg)
 
                 } else {
                     setToken({ loading: false, userToken: resJson.data})
                     navigation.navigate('MainTabScreen')
+                    console.log("log in : "+token.userToken)
 
                 }
 
