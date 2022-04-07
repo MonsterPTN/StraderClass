@@ -18,7 +18,7 @@ import { AuthContext } from '../../Redux/AuthContext';
 export default function App({ navigation }) {
     const { setToken } = useContext(AuthContext)
     const [email, setEmail] = useState('admin@gmail.com');
-    const [password, setPassWord] = useState('1234567');
+    const [password, setPassWord] = useState('12345678');
     const { token } = useContext(AuthContext)
 
     useEffect(() => {
@@ -27,6 +27,7 @@ export default function App({ navigation }) {
     }, [])
 
     const getLogin = async () => {
+
         const apiURL = 'https://traderclass.vn/api/login';
         fetch(apiURL, {
             method: 'POST',
@@ -42,13 +43,16 @@ export default function App({ navigation }) {
             .then((res) => res.json())
             .then((resJson) => {
                 if (!resJson.status) {
-                    Alert.alert("message", resJson.msg)
+                    Alert.alert("Message", resJson.msg)
 
                 } else {
                     setToken({ loading: false, userToken: resJson.data.token})
+<<<<<<< HEAD
                     console.log(resJson.data.token)
+=======
+>>>>>>> origin/devDuc
                     navigation.navigate('MainTabScreen')
-
+                    console.log("log in : "+resJson.data.token)
                 }
 
             }).catch((error) => {

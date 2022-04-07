@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Text, View, Modal, Pressable, StatusBar, StyleSheet, FlatList, Image, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, Modal, Pressable, StatusBar, StyleSheet, FlatList, Image, TouchableOpacity, TextInput, Alert } from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
 import BackIcon from '../../Icons/BackIcon';
 import NonIcon from '../../Icons/NonIcon';
@@ -16,7 +16,7 @@ const choosePhotoFromLibrary = () => {
         compressImageQuality: 0.7,
         includeBase64: true,
     }).then(image => {
-        // console.log(image);
+        console.log(image.path);
         this.setState({ image: image.path });
         this.setState({ data: image.data });
         this.bs.current.snapTo(1);
@@ -45,113 +45,152 @@ const ProfileScreen = (props) => {
     // const refRBSheet = useRef();
     const [modalVisible, setModalVisible] = useState(false);
     const { token } = useContext(AuthContext)
-    const [user, setUser] = useState({
-        fullname: "",
-        phone: "",
-        address: "",
-        photo: "",
+    const [fullname, setFullname] = useState("");
+    const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
+    const [photo, setPhoto] = useState("");
+    const getUpDaTe = () => {
+    const apiURL = 'https://traderclass.vn/api/update-user';
+    fetch(apiURL, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': token.userToken != "" ? `Bearer ${token.userToken}` : ""
+        },
+        body: JSON.stringify({
+            fullname: fullname,
+            phone: phone,
+            address: address,
         })
+    })
+        .then((res) => res.json())
+        .then((resJson) => {
 
-    
+            if (!resJson.status) {
+                Alert.alert("message", resJson.msg)
+            } else {
+                props.navigation.navigate('User')
+            }
+        }).catch((error) => {
+            console.log('Error: ', error);
+        })
+}
+const geProfile = () => {
+    const apiURL = 'https://traderclass.vn/api/user';
+    fetch(apiURL, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': token.userToken ? `Bearer ${token.userToken}` : ""
+        },
+    })
+        .then((res) => res.json())
+        .then((resJson) => {
+            console.log("asdasd", resJson)
+            if (!resJson.status) {
+                Alert.alert("message", resJson.msg)
+            } else {
+                setFullname(resJson.data.fullname + "")
+                setPhone(resJson.data.phone + "")
+                setPhoto(resJson.data.photo + "")
+                setAddress(resJson.data.address + "")
 
-    
-    useEffect(()=>{
+            }
 
-    },[])
-    return (
-        <View style={styles.viewMain}>
-            <View style={styles.header}>
-            <GoBack navigation={props.navigation}/>
-                <Text style={styles.textHeader}>Account Infomation</Text>
-                <View style={{ paddingLeft: 6 }}><NonIcon style={styles.iconHeader} /></View>
-            </View>
-            <View style={styles.view1}>
-                <TouchableOpacity onPress={() => setModalVisible(true)} >
-                    <Image style={styles.image} source={{uri: token.userToken.user.photo}}></Image>
-                </TouchableOpacity>
+        }).catch((error) => {
+            console.log('Error: ', error);
+        })
+}
 
-            </View>
-            <View style={styles.view2}>
-                <View style={styles.view3}>
-                    <View style={styles.view4} >
-                        <Text style={{ color: 'white' }}>Name</Text>
-                        <TextInput
-                            backfaceVisibility={'visible'}
-                            color={'white'}
-                            borderBottomWidth={2}
-                            width={'100%'}
-                            borderColor={'gray'}
-                            placeholder={token.userToken.user.fullname}
-                            placeholderTextColor={'gray'}
-                            selectionColor='white'
-                        />
-                    </View>
-                   
-                </View>
-                <View style={{ marginTop: 15 }}>
-                    <Text style={{ color: 'white' }}>Number phone</Text>
-                    <TextInput
-                        backfaceVisibility={'visible'}
-                        color={'white'}
-                        borderBottomWidth={2}
-                        width={'100%'}
-                        borderColor={'gray'}
-                        placeholder={token.userToken.user.phone}
-                        placeholderTextColor={'white'}
-                        selectionColor='white'
-                    />
-                </View>
-                <View style={{ marginTop: 15 }}>
-                    <Text style={{ color: 'white' }}>Address</Text>
-                    <TextInput
-                        backfaceVisibility={'visible'}
-                        color={'white'}
-                        borderBottomWidth={2}
-                        width={'100%'}
-                        borderColor={'gray'}
-                        placeholder={token.userToken.user.address}
-                        placeholderTextColor={'white'}
-                        selectionColor='white'
-                    />
-                </View>
-
-            </View>
-            <View style={{ marginTop: 49 }}>
-                <TouchableOpacity style={styles.touSave}>
-                    <SaveIcon />
-                    <Text style={styles.textSave} >Save</Text>
-                </TouchableOpacity>
-            </View>
-            <View>
-            </View>
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    Alert.alert("Modal has been closed.");
-                    setModalVisible(!modalVisible);
-                }}
-            >
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text style={{ color: '#FF8600', fontSize: 16 }}>Chosse acction</Text>
-                        <View style={{ padding: 10, marginVertical: 10 }}>
-                            <TouchableOpacity style={styles.touchModal} onPress={takePhotoFromCamra}>
-                                <Text style={styles.textTouch}>Camera</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.touchModal} onPress={choosePhotoFromLibrary}>
-                                <Text style={styles.textTouch}>Graly</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.touchModal} onPress={() => setModalVisible(!modalVisible)}>
-                                <Text style={styles.textTouch}>Cancel</Text>
-                            </TouchableOpacity>
-                        </View>
-
-                    </View>
-                </View>
-            </Modal>
+useEffect(() => {
+    geProfile()
+}, [])
+return (
+    <View style={styles.viewMain}>
+        <View style={styles.header}>
+            <GoBack navigation={props.navigation} />
+            <Text style={styles.textHeader}>Account Infomation</Text>
+            <View style={{ paddingLeft: 6 }}><NonIcon style={styles.iconHeader} /></View>
         </View>
-    );
+        <View style={styles.view1}>
+            <TouchableOpacity onPress={() => setModalVisible(true)} >
+                <Image value={photo} onChangeText={setPhoto} style={styles.image} source={{ uri: photo }}></Image>
+            </TouchableOpacity>
+
+        </View>
+        <View style={styles.view2}>
+            <View style={styles.view3}>
+                <View style={styles.view4} >
+                    <Text style={{ color: 'white' }}>Name</Text>
+                    <TextInput
+                        value={fullname}
+                        onChangeText={setFullname}
+                        placeholder={fullname}
+                        style={styles.textinput}
+                    />
+                </View>
+
+            </View>
+            <View style={{ marginTop: 15 }}>
+                <Text style={{ color: 'white' }}>Number phone</Text>
+                <TextInput
+                    value={phone}
+                    onChangeText={setPhone}
+                    style={styles.textinput}
+                    placeholder={phone}
+                   
+                />
+            </View>
+            <View style={{ marginTop: 15 }}>
+                <Text style={{ color: 'white' }}>Address</Text>
+                <TextInput
+                    value={address}
+                    onChangeText={setAddress}
+                    style={styles.textinput}
+                    borderColor={'gray'}
+                    placeholder={address}
+                />
+            </View>
+
+        </View>
+        <View style={{ marginTop: 49 }}>
+            <TouchableOpacity style={[styles.touSave]} onPress={() => getUpDaTe()} >
+                <SaveIcon />
+                <Text style={styles.textSave} >Save</Text>
+            </TouchableOpacity>
+        </View>
+        <View>
+        </View>
+        <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+                Alert.alert("Modal has been closed.");
+                setModalVisible(!modalVisible);
+            }}
+        >
+            <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                    <Text style={{ color: '#FF8600', fontSize: 16 }}>Chosse acction</Text>
+                    <View style={{ padding: 10, marginVertical: 10 }}>
+                        <TouchableOpacity style={styles.touchModal} onPress={takePhotoFromCamra}>
+                            <Text style={styles.textTouch}>Camera</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.touchModal} onPress={choosePhotoFromLibrary}>
+                            <Text style={styles.textTouch}>Graly</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.touchModal} onPress={() => setModalVisible(!modalVisible)}>
+                            <Text style={styles.textTouch}>Cancel</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                </View>
+            </View>
+        </Modal>
+    </View>
+);
 }
 export default ProfileScreen;
