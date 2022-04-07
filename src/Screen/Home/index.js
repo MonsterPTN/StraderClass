@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import { StyleSheet, View, Text, Image, ScrollView, ImageBackground, FlatList, StatusBar, TouchableOpacity } from 'react-native';
 import UserIcon from '../../Icons/UserIcon';
 import NonIcon from '../../Icons/NonIcon';
@@ -14,12 +14,14 @@ import ListCourse from '../../Components/ListTopCourse';
 import ListTopTeacher from '../../Components/ListTeacher'
 import { Colors } from '../../Until/Colors';
 import Clipboard from '@react-native-community/clipboard';
+import { AuthContext } from "../../Redux/AuthContext";
 const HomeScreen = (props) => {
   const [dataCourse, setDataCourse] = useState([]);
   const [dataTopCourse, setDataTopCourse] = useState([]);
   const [dataTopTeacher, setDataTopTeacher] = useState([]);
   const [dataTop1, setDataTop1] = useState([]);
   const [isloading, setisLoading] = useState(true);
+  const { token } = useContext(AuthContext)
   useEffect(() => {
     getListCourse();
     getListTopCourse();
@@ -28,6 +30,23 @@ const HomeScreen = (props) => {
     return () => {
     }
   }, [])
+  const getMyList = () => {
+    const apiURL = `https://traderclass.vn/api/add-course/${dataTop1.id}`;
+    fetch(apiURL, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': token != "" ? `Bearer ${token.userToken}` : ""
+        },
+    })
+        .then((res) => res.json())
+        .then((resJson) => {
+
+        }).catch((error) => {
+            console.log('Request API ERROR', error);
+        }).finally(() => setisLoading(false))
+}
   const writeToClipboard = async () => {
     //To copy the text to clipboard
     Clipboard.setString(`https://www.youtube.com/watch?v=${dataTop1.video_id}`);
@@ -142,7 +161,7 @@ const HomeScreen = (props) => {
             })}>
                   <PlayIcon />
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=> getMyList()}>
                   <WishIcon />
                 </TouchableOpacity>
               </View>

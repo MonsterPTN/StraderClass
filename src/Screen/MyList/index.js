@@ -3,6 +3,7 @@ import { Text, View, SafeAreaView, ScrollView, StatusBar, StyleSheet, TextInput,
 import PlaySmallIcon from '../../Icons/PlaySmallIcon'
 import { styles } from './styles';
 import { AuthContext } from "../../Redux/AuthContext";
+import ListMyList from '../../Components/ListMyList';
 
 const MyList = () => {
     const { token } = useContext(AuthContext)
@@ -31,34 +32,15 @@ const MyList = () => {
                 console.log('Request API ERROR', error);
             }).finally(() => setisLoading(false))
     }
-    renderItem = ({ item, index }) => {
-        return (
-
-            <View style={{ flexDirection: 'row', marginBottom: 6, backgroundColor: '#000000', justifyContent: 'center', padding:5 }}>
-
-                <View style={{ flexDirection: 'row', flex:1,alignItems:'center' }}>
-                    <Image source={require('../../Static/Image/imageSearch.png')}></Image>
-                    <View style={{ justifyContent: 'space-between', paddingHorizontal: 8, flex:1,flexDirection:'row',alignItems:'center'}}>
-                        <Text numberOfLines={2} style={styles.text3}>{item.name}</Text>
-                        <PlaySmallIcon />
-                    </View>
-                </View>
-                <View style={{ justifyContent: 'center', marginRight: 9 }}>
-
-                </View>
-            </View>
-
-        )
-    }
 
     return (
-        <View style={{ backgroundColor: '#171921', paddingRight: 15, paddingLeft: 15, flex:1 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', paddingTop: 25, justifyContent: 'center', paddingBottom: 80 }}>
+        <View style={styles.viewMain}>
+            {console.log(token)}
+            <View style={styles.view1}>
                 <Text style={styles.textHeader}>My List</Text>
             </View>
-            <FlatList
+            <ListMyList
                     data={dataMyList}
-                    renderItem={renderItem}
                 />
 
         </View>

@@ -34,4 +34,17 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         paddingTop: 4
     },
+    viewMain: {
+        backgroundColor: '#171921',
+        paddingRight: 15,
+        paddingLeft: 15,
+        flex: 1
+    },
+    view1: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingTop: 25,
+        justifyContent: 'center',
+        paddingBottom: 80
+    }
 });
