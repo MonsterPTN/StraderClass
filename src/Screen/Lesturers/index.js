@@ -15,6 +15,7 @@ import ListCourseByTeacher from '../../Components/ListCourseByTeacher'
 import GoBack from '../../Components/GoBack'
 export default function Lesturers({ route, navigation }) {
     const [dataCourse, setDataCourse] = useState([]);
+    const [isloading, setisLoading] = useState(true);
     useEffect(() => {
         getListCourse();
         return () => {

@@ -9,7 +9,7 @@ import {
     StatusBar,
     StyleSheet,
     Text,
-    useColorScheme,
+    ImageBackground,
     View,
     TouchableOpacity,
     TextInput,
@@ -59,6 +59,7 @@ export default function App({ navigation }) {
     }
     return (
         <SafeAreaView style={styles.safeview}>
+            <ImageBackground source={require('../../Static/Image/background.png')} style = {{height:'100%',}} imageStyle = {{height:'100%'}}>
             <View style={styles.viewTop}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <BackIcon style={styles.iconBack} />
@@ -133,6 +134,7 @@ export default function App({ navigation }) {
                     </Text>
                 </View>
             </ScrollView>
+            </ImageBackground>
         </SafeAreaView>
     );
 };

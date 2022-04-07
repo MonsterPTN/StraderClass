@@ -45,7 +45,8 @@ export default function App({ navigation }) {
                     Alert.alert("message", resJson.msg)
 
                 } else {
-                    setToken({ loading: false, userToken: resJson.data})
+                    setToken({ loading: false, userToken: resJson.data.token})
+                    console.log(resJson.data.token)
                     navigation.navigate('MainTabScreen')
 
                 }
@@ -59,13 +60,16 @@ export default function App({ navigation }) {
 
 
         <SafeAreaView style={styles.safeview}>
-            <ImageBackground source={require('../../Static/Image/images.jpg')} style = {{height:'100%',flex:1,justifyContent:'center'}} imageStyle = {{height:'100%'}}>
+            <ImageBackground source={require('../../Static/Image/background.png')} style = {{height:'100%',flex:1,justifyContent:'center'}} imageStyle = {{height:'100%'}}>
             <View style={styles.viewBot}>
                 <View>
                     <Text style={styles.welcomeText}>Welcome back</Text>
                     <Text style={styles.descripText}>Login to your account</Text>
                 </View>
                 <View style={styles.viewinput}>
+                    <View style = {{justifyContent:'flex-start'}}>
+                    <Text style = {styles.text1}>Email</Text>
+                    </View>
                     <TextInput
                         value={email}
                         onChangeText={setEmail}
@@ -75,6 +79,9 @@ export default function App({ navigation }) {
                     >
 
                     </TextInput>
+                    <View style = {{justifyContent:'flex-start'}}>
+                    <Text style = {styles.text1}>Password</Text>
+                    </View>
                     <TextInput
                         value={password}
                         onChangeText={setPassWord}
