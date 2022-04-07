@@ -62,8 +62,7 @@ export default function App({ navigation }) {
             <View style={styles.viewIcon}>
               <AppleIcon style={{ marginRight: 10 }} />
               <Text style={[styles.textTouchAP]}>
-                Connect with Apple ID
-
+                Sign in with Apple
               </Text>
             </View>
           </TouchableOpacity>
