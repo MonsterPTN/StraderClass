@@ -32,7 +32,7 @@ const UserScreen = (props) => {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': token.userToken.token  ? `Bearer ${token.userToken.token}` : ""
+                'Authorization': token.userToken  ? `Bearer ${token.userToken}` : ""
             },
         })
             .then((res) => res.json())
