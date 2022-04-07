@@ -44,7 +44,7 @@ export default function App({ navigation }) {
             <View style={styles.viewIcon}>
               <FaceBookIcon style={{ marginRight: 10 }} />
               <Text style={[styles.textTouchFB]}>
-                Connect with Facebook
+              Sign in with Facebook
 
               </Text>
             </View>
@@ -53,7 +53,7 @@ export default function App({ navigation }) {
             <View style={styles.viewIcon}>
               <GoogleIcon style={{ marginRight: 10 }} />
               <Text style={[styles.textTouchGG]}>
-                Connect with Google
+              Sign in with Google
 
               </Text>
             </View>

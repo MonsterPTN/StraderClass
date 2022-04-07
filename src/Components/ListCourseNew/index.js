@@ -4,10 +4,10 @@ import { styles } from './styles';
 import CourseNewItem from '../CourseNewItem'
 
 
-export default function ListTopCourseNew(props) {
+export default function ListCourseNew(props) {
     return (
         <View>
-            <FlatList
+            {/* <FlatList
                 data={props.data}
                 renderItem={({index, item}) =>(
                     <CourseNewItem
@@ -19,7 +19,18 @@ export default function ListTopCourseNew(props) {
                         />
                 )}
                 keyExtractor = {(item) => item.id}
-            />
+            /> */}
+            {
+                props.data.map((item) => {
+                    return (
+                        <CourseNewItem
+                            navigation={props.navigation}
+                            item={item}
+                            key={item.id}
+                        />
+                    )
+                })
+            }
         </View>
     )
 }

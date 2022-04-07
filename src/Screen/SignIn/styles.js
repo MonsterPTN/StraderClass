@@ -38,18 +38,23 @@ export const styles = StyleSheet.create({
 
     },
     viewinput: {
-        alignItems: 'center',
+        paddingHorizontal:15
+    },
+    text1:{
+        color: Colors.second,
+        fontSize:14
     },
     input: {
-        borderWidth: 2,
-        width: '90%',
-        paddingVertical: 15,
-        borderRadius: 30,
+        borderWidth: 1,
+        width: '100%',
+        paddingVertical: 10,
+        borderRadius: 5 ,
         backgroundColor: Colors.eleventh,
         borderColor: Colors.second,
         paddingHorizontal: 25,
         color: Colors.second,
-        margin: 6,
+        marginVertical: 6,
+        marginBottom:12
 
     },
     textTouch: {
@@ -65,8 +70,8 @@ export const styles = StyleSheet.create({
         width: '90%',
         alignItems: 'center',
         paddingVertical: 17,
-        borderRadius: 30,
-        marginTop: 35,
+        borderRadius: 5,
+        marginTop: 15,
     },
     safeview: {
         flex: 1,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState,useContext } from 'react';
-import { StyleSheet, View, Text, Image, ScrollView, ImageBackground, FlatList, StatusBar, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, RefreshControl, ScrollView, ImageBackground, FlatList, StatusBar, TouchableOpacity } from 'react-native';
 import UserIcon from '../../Icons/UserIcon';
 import NonIcon from '../../Icons/NonIcon';
 import RectangleIcon from '../../Icons/RectangleIcon'
@@ -42,6 +42,7 @@ const HomeScreen = (props) => {
     })
         .then((res) => res.json())
         .then((resJson) => {
+          console.log(token.userToken)
 
         }).catch((error) => {
             console.log('Request API ERROR', error);
@@ -115,6 +116,7 @@ const HomeScreen = (props) => {
     )
   }
 
+
   
   useEffect(() => {
     getListCourse();
@@ -125,9 +127,21 @@ const HomeScreen = (props) => {
 
     }
   }, [])
-  
+  const [refreshing, setRefreshing] = React.useState(false);
+  const wait = (timeout) => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
+}
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(2000).then(() => setRefreshing(false));
+    getListCourse();
+    getListTopCourse();
+    getListTopTeacher();
+    getListTop1();
+}, []);
   return (
     <View style={{ backgroundColor: Colors.primary }}>
+      {/* {console.log("Tokennnn" + token.userToken)} */}
       <View style={styles.view3}>
         <View style={{ paddingRight: 15 }}><NonIcon style={styles.iconHeader} /></View>
         <Text style={styles.textHeader}>Trader Class</Text>
@@ -137,7 +151,15 @@ const HomeScreen = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-      <ScrollView style={{ marginBottom: 80 }} >
+      <ScrollView style={{ marginBottom: 80 }} 
+      nestedScrollEnabled={true}
+      contentContainerStyle={styles.scrollView}
+      refreshControl={
+          <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+          />
+      }>
         <StatusBar style="auto" />
         <View style={styles.view4}>
           <ImageBackground source={dataTop1.photo ? { uri: dataTop1.photo } : require('../../Static/Image/image.png')} style={styles.image}>
