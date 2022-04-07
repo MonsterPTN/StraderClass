@@ -47,10 +47,6 @@ export default function App({ navigation }) {
 
                 } else {
                     setToken({ loading: false, userToken: resJson.data.token})
-<<<<<<< HEAD
-                    console.log(resJson.data.token)
-=======
->>>>>>> origin/devDuc
                     navigation.navigate('MainTabScreen')
                     console.log("log in : "+resJson.data.token)
                 }
