@@ -16,7 +16,7 @@ const choosePhotoFromLibrary = () => {
         compressImageQuality: 0.7,
         includeBase64: true,
     }).then(image => {
-        // console.log(image);
+         console.log(image.path);
         this.setState({ image: image.path });
         this.setState({ data: image.data });
         this.bs.current.snapTo(1);
@@ -45,23 +45,22 @@ const ProfileScreen = (props) => {
     // const refRBSheet = useRef();
     const [modalVisible, setModalVisible] = useState(false);
     const { token } = useContext(AuthContext)
-    const [fullname, setFullname] = useState();
-    const [phone, setPhone] = useState();
-    const [address, setAddress] = useState();
-    const [photo, setPhoto] = useState();
+    const [fullname, setFullname] = useState("");
+    const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
+    const [photo, setPhoto] = useState("");
     
 
     const getUpDaTe = () => {
         const apiURL = 'https://traderclass.vn/api/update-user';
         fetch(apiURL, {
-            method: 'PUT',
+            method: 'POST',
             headers: {
-                Accept: 'application/json',
+                'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': token.data.token != "" ? `Bearer ${token.data.token}` : ""
+                'Authorization': token.userToken != "" ? `Bearer ${token.userToken}` : ""
             },
             body: JSON.stringify({
-                photo: photo,
                 fullname: fullname,
                 phone: phone,
                 address: address,
@@ -77,7 +76,7 @@ const ProfileScreen = (props) => {
                 }
             }).catch((error) => {
                 console.log('Error: ', error);
-            }).finally()
+            })
     }
     const geProfile = () => {
         const apiURL = 'https://traderclass.vn/api/user';
@@ -104,7 +103,7 @@ const ProfileScreen = (props) => {
 
             }).catch((error) => {
                 console.log('Error: ', error);
-            }).finally()
+            })
     }
 
     useEffect(() => {

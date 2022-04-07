@@ -17,7 +17,7 @@ import { AuthContext } from '../../Redux/AuthContext';
 export default function App({ navigation }) {
     const { setToken } = useContext(AuthContext)
     const [email, setEmail] = useState('admin@gmail.com');
-    const [password, setPassWord] = useState('1234567');
+    const [password, setPassWord] = useState('12345678');
     const { token } = useContext(AuthContext)
 
     useEffect(() => {

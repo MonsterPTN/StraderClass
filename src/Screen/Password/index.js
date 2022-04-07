@@ -18,7 +18,7 @@ const UpdatePasswordScreen = (props) => {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': token.userToken.token != "" ? `Bearer ${token.userToken.token}` : ""
+                'Authorization': token.userToken != "" ? `Bearer ${token.userToken}` : ""
             },
             body: JSON.stringify({
                 currentPassword: currentPassword,
@@ -45,7 +45,7 @@ const UpdatePasswordScreen = (props) => {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': token.userToken.token != "" ? `Bearer ${token.userToken.token}` : ""
+                'Authorization': token.userToken != "" ? `Bearer ${token.userToken}` : ""
             },
             body: JSON.stringify({
                

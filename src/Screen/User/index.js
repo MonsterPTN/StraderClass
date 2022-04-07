@@ -64,7 +64,7 @@ const UserScreen = (props) => {
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': token.data != "" ? `Bearer ${token.data}` : ""
+            'Authorization': token.userToken != "" ? `Bearer ${token.userToken}` : ""
         },
         body: JSON.stringify({
            
