@@ -58,7 +58,7 @@ const UpdatePasswordScreen = (props) => {
                         value={currentPassword}
                         onChangeText={setCurrentPassword}
                         backgroundColor={'#272A38'}
-                        style={{ height: 50 }}
+                        style={styles.colorinput}
                     />
                 </View>
                 <View style={styles.viewTouch2}>
@@ -69,7 +69,7 @@ const UpdatePasswordScreen = (props) => {
                         value={password}
                         onChangeText={setPassword}
                         backgroundColor={'#272A38'}
-                        style={{ height: 50 }}
+                        style={styles.colorinput}
                     />
                 </View>
                 <View style={styles.viewTouch2}>
@@ -80,7 +80,7 @@ const UpdatePasswordScreen = (props) => {
                         value={password_confirmation}
                         onChangeText={setPassword_confirmation}
                         backgroundColor={'#272A38'}
-                        style={{ height: 50 }}
+                        style={styles.colorinput}
                     />
                 </View>
                 <View style={{ marginTop: 16, marginHorizontal: 11 }}>

@@ -60,5 +60,12 @@ export const styles = StyleSheet.create({
     view2: {
         marginTop: 16,
         marginHorizontal: 11
-    }
+    },
+    colorinput: { 
+        height: 50, 
+        color: "#FF8600" ,
+        padding: 6,
+        margin: 2
+    },
+
 })

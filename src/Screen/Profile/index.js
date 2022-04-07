@@ -12,11 +12,11 @@ const choosePhotoFromLibrary = () => {
     ImagePicker.openPicker({
         width: 300,
         height: 300,
-        cropping: true,
+        cropping: false,
         compressImageQuality: 0.7,
         includeBase64: true,
     }).then(image => {
-        // console.log(image);
+        console.log(image.path);
         this.setState({ image: image.path });
         this.setState({ data: image.data });
         this.bs.current.snapTo(1);
@@ -82,9 +82,7 @@ const ProfileScreen = (props) => {
             .then((resJson) => {
                 console.log(resJson)
                 if (!resJson.status) {
-
                     Alert.alert("message", resJson.msg)
-                    console.log('Error: ', token.userToken.token);
                 } else {
 
                 }
