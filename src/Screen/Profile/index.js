@@ -49,18 +49,7 @@ const ProfileScreen = (props) => {
     const [phone, setPhone] = useState();
     const [address, setAddress] = useState();
     const [photo, setPhoto] = useState();
-    const [user, setUser] = useState({
-        fullname: "",
-        phone: "",
-        address: "",
-        photo: "",
-    })
-    useEffect(() => {
-        setAddress(token.userToken.user.address)
-        setFullname(token.userToken.user.fullname)
-        setPhone(token.userToken.user.phone)
-        setPhoto(token.userToken.user.photo)
-    }, [])
+    
 
     const getUpDaTe = () => {
         const apiURL = 'https://traderclass.vn/api/update-user';
@@ -90,7 +79,37 @@ const ProfileScreen = (props) => {
                 console.log('Error: ', error);
             }).finally()
     }
+    const geProfile = () => {
+        const apiURL = 'https://traderclass.vn/api/user';
+        fetch(apiURL, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': token.userToken  ? `Bearer ${token.userToken}` : ""
+            },
+        })
+            .then((res) => res.json())
+            .then((resJson) => {
+                console.log("asdasd" ,resJson)
+                if (!resJson.status) {
+                    Alert.alert("message", resJson.msg)
+                } else {
+                    setFullname(resJson.data.fullname + "")
+                    setPhone(resJson.data.phone + "")
+                    setPhoto(resJson.data.photo + "")
+                    setAddress(resJson.data.address + "")
 
+                }
+
+            }).catch((error) => {
+                console.log('Error: ', error);
+            }).finally()
+    }
+
+    useEffect(() => {
+        geProfile()
+    }, [])
     return (
         <View style={styles.viewMain}>
             <View style={styles.header}>
@@ -100,7 +119,7 @@ const ProfileScreen = (props) => {
             </View>
             <View style={styles.view1}>
                 <TouchableOpacity onPress={() => setModalVisible(true)} >
-                    <Image value={photo} onChangeText={setPhoto} style={styles.image} source={{ uri: token.userToken.photo }}></Image>
+                    <Image value={photo} onChangeText={setPhoto} style={styles.image} source={{ uri: photo }}></Image>
                 </TouchableOpacity>
 
             </View>
@@ -116,7 +135,7 @@ const ProfileScreen = (props) => {
                             borderBottomWidth={2}
                             width={'100%'}
                             borderColor={'gray'}
-                            placeholder={token.userToken.fullname}
+                            placeholder={fullname}
                             placeholderTextColor={'gray'}
                             selectionColor='white'
                         />
@@ -133,7 +152,7 @@ const ProfileScreen = (props) => {
                         borderBottomWidth={2}
                         width={'100%'}
                         borderColor={'gray'}
-                        placeholder={token.userToken.phone}
+                        placeholder={phone}
                         placeholderTextColor={'white'}
                         selectionColor='white'
                     />
@@ -148,7 +167,7 @@ const ProfileScreen = (props) => {
                         borderBottomWidth={2}
                         width={'100%'}
                         borderColor={'gray'}
-                        placeholder={token.userToken.address}
+                        placeholder={address}
                         placeholderTextColor={'white'}
                         selectionColor='white'
                     />
