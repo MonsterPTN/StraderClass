@@ -1,7 +1,12 @@
 import { StyleSheet } from "react-native";
+import { Colors } from "../../Until/Colors"
 
 export const styles = StyleSheet.create({
-    textDC: { color: '#FFFFFF', fontWeight: '500', textAlign: 'center' },
+    textDC: {
+        color:  Colors.fourth,
+        fontWeight: '500',
+        textAlign: 'center'
+    },
     viewResendCode: {
         flex: 1,
         justifyContent: 'flex-end',
@@ -18,7 +23,7 @@ export const styles = StyleSheet.create({
         margin: 10,
         width: 60,
         height: 60,
-        backgroundColor: '#273B4A',
+        backgroundColor:  Colors.eighth,
         borderRadius: 60 / 2,
         alignItems: 'center',
     },
@@ -28,13 +33,13 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     textNewCode: {
-        color: '#FF8600',
+        color:  Colors.second,
         fontWeight: '500',
         marginLeft: 5,
         textAlign: 'center',
     },
     message: {
-        color: '#9A9A9A',
+        color: Colors.twelveth,
         fontSize: 14,
         fontWeight: '500',
         marginHorizontal: 45,
@@ -44,7 +49,7 @@ export const styles = StyleSheet.create({
     verifyText: {
         marginBottom: 25,
         textAlign: 'center',
-        color: '#FF8600',
+        color: Colors.second,
         fontSize: 33,
         fontWeight: '600',
     },
@@ -58,18 +63,18 @@ export const styles = StyleSheet.create({
         fontWeight: '500',
         textAlign: 'center',
         textAlignVertical: 'center',
-        color: '#FFFFFF',
+        color: Colors.fourth,
     },
     textConfirm: {
         fontSize: 14,
         fontWeight: '700',
-        color: '#000000',
+        color: Colors.fifth,
     },
     viewTouch: {
         alignItems: 'center',
     },
     touchConfirm: {
-        backgroundColor: '#FF8600',
+        backgroundColor: Colors.second,
         width: '100%',
         alignItems: 'center',
         paddingVertical: 15,
@@ -77,7 +82,7 @@ export const styles = StyleSheet.create({
     },
     safeview: {
         flex: 1,
-        backgroundColor: '#000000',
+        backgroundColor: Colors.fifth,
     },
 
 });

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Text, View, Modal, Pressable, StatusBar, StyleSheet, FlatList, Image, TouchableOpacity, TextInput } from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
 import BackIcon from '../../Icons/BackIcon';
 import NonIcon from '../../Icons/NonIcon';
 import { styles } from "./styles";
 import SaveIcon from '../../Icons/SaveIcon'
+import { AuthContext } from "../../Redux/AuthContext";
+
 import GoBack from '../../Components/GoBack'
 const choosePhotoFromLibrary = () => {
     ImagePicker.openPicker({
@@ -42,6 +44,20 @@ const takePhotoFromCamra = () => {
 const ProfileScreen = (props) => {
     // const refRBSheet = useRef();
     const [modalVisible, setModalVisible] = useState(false);
+    const { token } = useContext(AuthContext)
+    const [user, setUser] = useState({
+        fullname: "",
+        phone: "",
+        address: "",
+        photo: "",
+        })
+
+    
+
+    
+    useEffect(()=>{
+
+    },[])
     return (
         <View style={styles.viewMain}>
             <View style={styles.header}>
@@ -51,7 +67,7 @@ const ProfileScreen = (props) => {
             </View>
             <View style={styles.view1}>
                 <TouchableOpacity onPress={() => setModalVisible(true)} >
-                    <Image style={styles.image} source={require('../../Static/Image/imguser.png')}></Image>
+                    <Image style={styles.image} source={{uri: token.userToken.user.photo}}></Image>
                 </TouchableOpacity>
 
             </View>
@@ -65,24 +81,12 @@ const ProfileScreen = (props) => {
                             borderBottomWidth={2}
                             width={'100%'}
                             borderColor={'gray'}
-                            placeholder="Phan Thanh Nhan"
+                            placeholder={token.userToken.user.fullname}
                             placeholderTextColor={'gray'}
                             selectionColor='white'
                         />
                     </View>
-                    <View style={{ flex: 1, paddingLeft: 5 }}>
-                        <Text style={{ color: 'white' }}>Last Name</Text>
-                        <TextInput
-                            backfaceVisibility={'visible'}
-                            color={'white'}
-                            borderBottomWidth={2}
-                            width={'100%'}
-                            borderColor={'gray'}
-                            placeholder="Phone Number"
-                            placeholderTextColor={'gray'}
-                            selectionColor='white'
-                        />
-                    </View>
+                   
                 </View>
                 <View style={{ marginTop: 15 }}>
                     <Text style={{ color: 'white' }}>Number phone</Text>
@@ -92,7 +96,7 @@ const ProfileScreen = (props) => {
                         borderBottomWidth={2}
                         width={'100%'}
                         borderColor={'gray'}
-                        placeholder="0369741095"
+                        placeholder={token.userToken.user.phone}
                         placeholderTextColor={'white'}
                         selectionColor='white'
                     />
@@ -105,7 +109,7 @@ const ProfileScreen = (props) => {
                         borderBottomWidth={2}
                         width={'100%'}
                         borderColor={'gray'}
-                        placeholder="Ho Chi Minh"
+                        placeholder={token.userToken.user.address}
                         placeholderTextColor={'white'}
                         selectionColor='white'
                     />

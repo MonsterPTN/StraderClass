@@ -83,7 +83,7 @@ export default function App({ navigation }) {
                         onChangeText={setEmail}
                         style={styles.input}
                         placeholder="Email..."
-                        placeholderTextColor={'#FF8600'}
+                        placeholderTextColor={Colors.second}
                     >
 
                     </TextInput>
@@ -92,7 +92,7 @@ export default function App({ navigation }) {
                         onChangeText={setPassWord}
                         style={styles.input}
                         placeholder="Password..."
-                        placeholderTextColor={'#FF8600'}
+                        placeholderTextColor={Colors.second}
                         secureTextEntry
 
                     >
@@ -103,7 +103,7 @@ export default function App({ navigation }) {
                         onChangeText={setConfirm}
                         style={styles.input}
                         placeholder="Re-enter password..."
-                        placeholderTextColor={'#FF8600'}
+                        placeholderTextColor={Colors.second}
                         secureTextEntry
                     >
                     </TextInput>

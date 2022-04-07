@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useContext } from 'react';
 import { styles } from './styles'
+import { Colors } from '../../Until/Colors'
 
 import {
     SafeAreaView,
@@ -44,7 +45,7 @@ export default function App({ navigation }) {
                     Alert.alert("message", resJson.msg)
 
                 } else {
-                    setToken({ loading: false, userToken: resJson.data.token})
+                    setToken({ loading: false, userToken: resJson.data})
                     navigation.navigate('MainTabScreen')
 
                 }
@@ -70,7 +71,7 @@ export default function App({ navigation }) {
                         onChangeText={setEmail}
                         style={styles.input}
                         placeholder="User..."
-                        placeholderTextColor={'#FF8600'}
+                        placeholderTextColor={Colors.second}
                     >
 
                     </TextInput>
@@ -79,7 +80,7 @@ export default function App({ navigation }) {
                         onChangeText={setPassWord}
                         style={styles.input}
                         placeholder="Password..."
-                        placeholderTextColor={'#FF8600'}
+                        placeholderTextColor={Colors.second}
                         secureTextEntry
                     >
 

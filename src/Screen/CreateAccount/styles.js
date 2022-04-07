@@ -1,13 +1,13 @@
 import { StyleSheet } from "react-native";
 import { Colors } from "../../Until/Colors";
-import {Fonts} from '../../Until/Fonts'
+import {Fonts} from '../../Until/Fonts';
 export const styles = StyleSheet.create({
     textWR: {
         color: Colors.fourth,
         fontWeight: '500'
     },
     textBF: {
-        color: '#FFFFFF',
+        color:  Colors.fourth,
         fontWeight: '500',
         fontFamily:Fonts.font_700
     },
@@ -17,26 +17,26 @@ export const styles = StyleSheet.create({
     },
     descripText: {
         textAlign: 'center',
-        color: '#FF8600',
+        color: Colors.second,
         marginBottom: 30,
 
     },
     createText: {
         marginBottom: 50,
         textAlign: 'center',
-        color: '#FF8600',
+        color: Colors.second,
         fontSize: 33,
         fontWeight: '600',
 
     },
     textForgot: {
         margin: 10,
-        color: '#FFFFFF',
+        color:  Colors.fourth,
         fontWeight: '500',
         textAlign: 'center',
     },
     textSignup: {
-        color: '#FF8600',
+        color: Colors.second,
         fontWeight: '500',
         marginLeft: 5,
     },
@@ -53,15 +53,15 @@ export const styles = StyleSheet.create({
         width: '90%',
         paddingVertical: 15,
         borderRadius: 30,
-        backgroundColor: '#272A38',
-        borderColor: '#FF8600',
+        backgroundColor:  Colors.eleventh,
+        borderColor: Colors.second,
         paddingHorizontal: 25,
-        color: '#FF8600',
+        color: Colors.second,
         margin: 10,
 
     },
     textTouchSigup: {
-        color: '#000000',
+        color: Colors.fifth,
         fontSize: 14,
         fontWeight: '700',
     },
@@ -70,7 +70,7 @@ export const styles = StyleSheet.create({
         marginBottom: 40,
     },
     touchSignup: {
-        backgroundColor: '#FF8600',
+        backgroundColor: Colors.second,
         width: '90%',
         alignItems: 'center',
         paddingVertical: 15,
@@ -79,7 +79,7 @@ export const styles = StyleSheet.create({
     },
     safeview: {
         flex: 1,
-        backgroundColor: '#000000',
+        backgroundColor:  Colors.fifth,
     },
 });
 

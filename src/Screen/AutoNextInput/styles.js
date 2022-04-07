@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { Colors } from '../../Until/Colors'
 
 export const styles = StyleSheet.create({
   root: {padding: 20, minHeight: 300},
@@ -10,12 +11,12 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: 'center',
     textAlignVertical: 'center',
-    backgroundColor: '#273B4A',
+    backgroundColor: Colors.eighth,
     margin: 10,
     borderRadius: 60/2,
-    color: '#FFFFFF',
+    color: Colors.fourth,
   },
   focusCell: {
-    backgroundColor: '#FF8600',
+    backgroundColor: Colors.second,
   },
 });

@@ -10,12 +10,12 @@ export const styles = StyleSheet.create({
         marginLeft: 20
     },
     textTouchDone: {
-        color: '#000000',
+        color:  Colors.fifth,
         fontSize: 14,
         fontWeight: '500',
     },
     touchDone: {
-        backgroundColor: '#FF8600',
+        backgroundColor:  Colors.second,
         width: '70%',
         alignItems: 'center',
         paddingVertical: 15,
@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
 
     },
     messageText1: {
-        color: '#FFFFFF',
+        color:  Colors.fourth,
         fontSize: 21,
         marginHorizontal: 85,
         textAlign: 'center',
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
     },
     viewMesage: {
         flex: 1,
-        backgroundColor: '#171921',
+        backgroundColor:  Colors.primary,
         height: '100%',
         marginHorizontal: 20,
         marginVertical: 200,
@@ -59,7 +59,7 @@ export const styles = StyleSheet.create({
     forgotText: {
         marginBottom: 22,
         textAlign: 'center',
-        color: '#FF8600',
+        color:  Colors.second,
         fontSize: 33,
         fontWeight: '600',
 
@@ -74,17 +74,17 @@ export const styles = StyleSheet.create({
         width: '90%',
         paddingVertical: 15,
         borderRadius: 30,
-        backgroundColor: '#272A38',
-        borderColor: '#FF8600',
+        backgroundColor:  Colors.eleventh,
+        borderColor:  Colors.second,
         paddingHorizontal: 25,
-        color: '#FF8600',
+        color:  Colors.second,
         margin: 10,
 
     },
     textTouchSigup: {
         fontSize: 14,
         fontWeight: '700',
-        color: '#000000'
+        color:  Colors.fifth
     },
     viewTouch: {
         alignItems: 'center',
@@ -95,11 +95,11 @@ export const styles = StyleSheet.create({
         paddingVertical: 15,
         borderRadius: 30,
         marginTop: 30,
-        backgroundColor: '#FF8600'
+        backgroundColor:  Colors.second,
     },
     safeview: {
         flex: 1,
-        backgroundColor: '#000000',
+        backgroundColor:  Colors.fifth,
     },
     viewBot: {
         borderTopLeftRadius: 30,

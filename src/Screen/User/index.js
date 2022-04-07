@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Text, View, SafeAreaView, ScrollView, StatusBar, StyleSheet, TextInput, FlatList, Image, TouchableOpacity } from 'react-native';
 import NonIcon from '../../Icons/NonIcon';
 import BackIcon from '../../Icons/BackIcon';
@@ -17,10 +17,19 @@ import GoBack from '../../Components/GoBack'
 import { AuthContext } from "../../Redux/AuthContext";
 const UserScreen = (props) => {
     const { token } = useContext(AuthContext)
+    const [user, setUser] = useState({
+        fullname: "",
+        phone: "",
+        photo: ""
+
+    })
+    
+    useEffect(()=>{
+
+    },[])
 
     return (
         <View style={styles.viewMain}>
-            {console.log(token)}
             <View style={styles.header}>
 
                 <TouchableOpacity style={{ paddingLeft: 6 }}  onPress={() => props.navigation.goBack()}>
@@ -36,10 +45,10 @@ const UserScreen = (props) => {
 
                         <View style={styles.viewTouch}>
                             <View style={{ flexDirection: 'row' }}>
-                                <Image source={require('../../Static/Image/imguser.png')} style={styles.imgUser}></Image>
+                                <Image source={{uri: token.userToken.user.photo}} style={styles.imgUser}></Image>
                                 <View style={styles.view2}>
-                                    <Text style={styles.nameUser}>{token.userToken}</Text>
-                                    <Text style={styles.number}>0366478995</Text>
+                                    <Text style={styles.nameUser}>{token.userToken.user.fullname}</Text>
+                                    <Text style={styles.number}>{token.userToken.user.phone}</Text>
                                 </View>
                             </View>
                             <View style={styles.view2}>
