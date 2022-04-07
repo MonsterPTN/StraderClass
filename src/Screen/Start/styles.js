@@ -8,24 +8,23 @@ export const styles = StyleSheet.create({
     },
     textTouchSI: {
         color: Colors.fifth,
-        fontSize: 14,
-        fontWeight: '700',
+        fontSize: 19,
+
     },
     textTouchFB: {
         color: Colors.fourth,
-        fontSize: 14,
-        fontWeight: '700',
+        fontSize: 19,
+
     },
 
     textTouchGG: {
         color: Colors.fifth,
-        fontSize: 14,
-        fontWeight: '700',
+        fontSize: 19,
+
     },
     textTouchAP: {
         color: Colors.fourth,
-        fontSize: 14,
-        fontWeight: '700',
+        fontSize: 19,
     },
 
     slogan: {
@@ -39,32 +38,36 @@ export const styles = StyleSheet.create({
         margin: 7,
         width: '90%',
         alignItems: 'center',
-        paddingVertical: 15,
-        borderRadius: 30,
+        justifyContent:'center',
+        borderRadius: 5,
+        height:44
     },
     touchFB: {
         margin: 7,
         width: '90%',
         alignItems: 'center',
-        paddingVertical: 15,
-        borderRadius: 30,
+        justifyContent:'center',
+        borderRadius: 5,
         backgroundColor: Colors.nineth,
+        height:44
     },
     touchAP: {
         margin: 7,
         width: '90%',
         alignItems: 'center',
-        paddingVertical: 15,
-        borderRadius: 30,
-        backgroundColor: Colors.tenth,
+        justifyContent:'center',
+        borderRadius: 5,
+        backgroundColor: Colors.fifth,
+        height:44
     },
     touchGG: {
         margin: 7,
         width: '90%',
         alignItems: 'center',
-        paddingVertical: 15,
-        borderRadius: 30,
+        justifyContent:'center',
+        borderRadius: 5,
         backgroundColor: Colors.fourth,
+        height:44
     },
     safeview: {
         flex: 1,

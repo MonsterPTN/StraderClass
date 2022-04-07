@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, SafeAreaView, ScrollView, StatusBar, StyleSheet, FlatList, ImageBackground, Image, TouchableOpacity } from 'react-native';
+import { Text, View, RefreshControl, StatusBar, ScrollView } from 'react-native';
 import { styles } from './styles'
 import ListCourseNew from '../../Components/ListCourseNew'
 
@@ -27,17 +27,34 @@ const NewHotScreen = (props) => {
                 console.log('Request API ERROR', error);
             }).finally(() => setisLoading(false))
     }
+    const [refreshing, setRefreshing] = React.useState(false);
+    const wait = (timeout) => {
+      return new Promise(resolve => setTimeout(resolve, timeout));
+  }
+    const onRefresh = React.useCallback(() => {
+      setRefreshing(true);
+      wait(2000).then(() => setRefreshing(false));
+      getListNewCourse();
+  }, []);
     return (
         <View style={styles.view1} >
             <View style={styles.view2}>
                 <Text style={styles.textHeader}>New & Hot</Text>
             </View>
-            <View>
+            <ScrollView
+            nestedScrollEnabled={true}
+            contentContainerStyle={styles.scrollView}
+            refreshControl={
+                <RefreshControl
+                    refreshing={refreshing}
+                    onRefresh={onRefresh}
+                />
+            }>
                 <StatusBar style="auto" />
                 <ListCourseNew
                     data={dataNewCourse}
                     navigation={props.navigation} />
-            </View>
+            </ScrollView>
         </View>
     );
 

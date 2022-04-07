@@ -7,7 +7,7 @@ import MyListItem from '../MyListItem'
 export default function ListMyList(props) {
     return (
         <View>
-            <FlatList
+            {/* <FlatList
                 data={props.data}
                 renderItem={({index, item}) =>(
                     <MyListItem
@@ -19,7 +19,19 @@ export default function ListMyList(props) {
                         />
                 )}
                 keyExtractor = {(item) => item.id}
-            />
+                refreshing = {isloading}
+            /> */}
+            {
+                props.data.map((item) =>{
+                    return(
+                        <MyListItem
+                        navigation={props.navigation}
+                        item={item}
+                        key={item.id}
+                        />
+                    )
+                })
+            }
         </View>
     )
 }
