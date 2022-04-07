@@ -26,6 +26,7 @@ export default function App({ navigation }) {
     }, [])
 
     const getLogin = async () => {
+
         const apiURL = 'https://traderclass.vn/api/login';
         fetch(apiURL, {
             method: 'POST',
@@ -44,10 +45,9 @@ export default function App({ navigation }) {
                     Alert.alert("Message", resJson.msg)
 
                 } else {
-                    setToken({ loading: false, userToken: resJson.data})
+                    setToken({ loading: false, userToken: resJson.data.token})
                     navigation.navigate('MainTabScreen')
-                    console.log("log in : "+token.userToken)
-
+                    console.log("log in : "+resJson.data.token)
                 }
 
             }).catch((error) => {

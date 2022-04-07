@@ -12,11 +12,11 @@ const choosePhotoFromLibrary = () => {
     ImagePicker.openPicker({
         width: 300,
         height: 300,
-        cropping: false,
+        cropping: true,
         compressImageQuality: 0.7,
         includeBase64: true,
     }).then(image => {
-        console.log(image.path);
+        // console.log(image);
         this.setState({ image: image.path });
         this.setState({ data: image.data });
         this.bs.current.snapTo(1);
@@ -69,7 +69,7 @@ const ProfileScreen = (props) => {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': token.userToken.token != "" ? `Bearer ${token.userToken.token}` : ""
+                'Authorization': token.data.token != "" ? `Bearer ${token.data.token}` : ""
             },
             body: JSON.stringify({
                 photo: photo,
@@ -100,7 +100,7 @@ const ProfileScreen = (props) => {
             </View>
             <View style={styles.view1}>
                 <TouchableOpacity onPress={() => setModalVisible(true)} >
-                    <Image value={photo} onChangeText={setPhoto} style={styles.image} source={{ uri: token.userToken.user.photo }}></Image>
+                    <Image value={photo} onChangeText={setPhoto} style={styles.image} source={{ uri: token.userToken.photo }}></Image>
                 </TouchableOpacity>
 
             </View>
@@ -116,7 +116,7 @@ const ProfileScreen = (props) => {
                             borderBottomWidth={2}
                             width={'100%'}
                             borderColor={'gray'}
-                            placeholder={token.userToken.user.fullname}
+                            placeholder={token.userToken.fullname}
                             placeholderTextColor={'gray'}
                             selectionColor='white'
                         />
@@ -133,7 +133,7 @@ const ProfileScreen = (props) => {
                         borderBottomWidth={2}
                         width={'100%'}
                         borderColor={'gray'}
-                        placeholder={token.userToken.user.phone}
+                        placeholder={token.userToken.phone}
                         placeholderTextColor={'white'}
                         selectionColor='white'
                     />
@@ -148,7 +148,7 @@ const ProfileScreen = (props) => {
                         borderBottomWidth={2}
                         width={'100%'}
                         borderColor={'gray'}
-                        placeholder={token.userToken.user.address}
+                        placeholder={token.userToken.address}
                         placeholderTextColor={'white'}
                         selectionColor='white'
                     />

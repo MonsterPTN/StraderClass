@@ -32,13 +32,37 @@ const UpdatePasswordScreen = (props) => {
                 if (!resJson.status) {
                     Alert.alert("message", resJson.msg)
                 } else {
-                    props.navigation.navigate('SiginScreen')
+                    getLogout()
                 }
             }).catch((error) => {
                 console.log('Error: ', error);
             }).finally()
     }
-
+    const getLogout = () => {
+        const apiURL = 'https://traderclass.vn/api/logout';
+        fetch(apiURL, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': token.userToken.token != "" ? `Bearer ${token.userToken.token}` : ""
+            },
+            body: JSON.stringify({
+               
+            })
+        })
+            .then((res) => res.json())
+            .then((resJson) => {
+                console.log(resJson)
+                if (!resJson.status) {
+                    Alert.alert("message", resJson.msg)
+                } else {
+                    props.navigation.navigate('StartScreen')
+                }
+            }).catch((error) => {
+                console.log('Error: ', error);
+            }).finally()
+    }
     return (
         <View style={{ flex: 1, backgroundColor: '#171921', padding: 15 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', paddingTop: 25, justifyContent: 'space-between' }}>
