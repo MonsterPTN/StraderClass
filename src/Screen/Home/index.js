@@ -1,5 +1,5 @@
 import React, { useEffect, useState,useContext } from 'react';
-import { StyleSheet, View, Text, RefreshControl, ScrollView, ImageBackground, FlatList, StatusBar, TouchableOpacity } from 'react-native';
+import { Alert, View, Text, RefreshControl, ScrollView, ImageBackground, FlatList, StatusBar, TouchableOpacity } from 'react-native';
 import UserIcon from '../../Icons/UserIcon';
 import NonIcon from '../../Icons/NonIcon';
 import RectangleIcon from '../../Icons/RectangleIcon'
@@ -51,7 +51,7 @@ const HomeScreen = (props) => {
   const writeToClipboard = async () => {
     //To copy the text to clipboard
     Clipboard.setString(`https://www.youtube.com/watch?v=${dataTop1.video_id}`);
-    alert('Copied to Clipboard!');
+   Alert.alert("Messenger",'Copied to Clipboard!');
   };
   getListCourse = () => {
     const apiURL = 'https://traderclass.vn/api/course';

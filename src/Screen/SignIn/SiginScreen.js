@@ -18,7 +18,7 @@ import { AuthContext } from '../../Redux/AuthContext';
 export default function App({ navigation }) {
     const { setToken } = useContext(AuthContext)
     const [email, setEmail] = useState('admin@gmail.com');
-    const [password, setPassWord] = useState('12345678');
+    const [password, setPassWord] = useState('1234567');
     const { token } = useContext(AuthContext)
 
     useEffect(() => {
@@ -60,7 +60,7 @@ export default function App({ navigation }) {
 
 
         <SafeAreaView style={styles.safeview}>
-            <ImageBackground source={require('../../Static/Image/background.png')} style = {{height:'100%',flex:1,justifyContent:'center'}} imageStyle = {{height:'100%'}}>
+            <ImageBackground source={{uri:"https://traderclass.vn/public/upload/images/course/thumb/94732711cf31016f5820.jpg"}} style = {{height:'100%',flex:1,justifyContent:'center'}} imageStyle = {{height:'100%'}}>
             <View style={styles.viewBot}>
                 <View>
                     <Text style={styles.welcomeText}>Welcome back</Text>

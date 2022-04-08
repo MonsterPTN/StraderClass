@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity,Alert } from 'react-native';
 import BackIcon from '../../Icons/BackIcon'
 import NonIcon from '../../Icons/NonIcon'
 import Num1Icon from '../../Icons/Num1Icon'
@@ -14,7 +14,7 @@ const IntroduceScreen = (props) => {
     const writeToClipboard = async () => {
         //To copy the text to clipboard
         Clipboard.setString(copy);
-        alert('Copied to Clipboard!');
+        Alert.alert("Messenger",'Copied to Clipboard!');
       };
     return (
         <View style={styles.viewAll}>

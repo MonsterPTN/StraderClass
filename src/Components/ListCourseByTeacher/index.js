@@ -11,6 +11,7 @@ export default function ListCourseByTeacher(props) {
                 data={props.data}
                 renderItem={({index, item}) =>(
                     <CourseByTeacherItem
+                    key={item.id}
                         navigation = {props.navigation}
                         item = {item}
                         style = {index == 0? styles.firstItem:
@@ -18,7 +19,6 @@ export default function ListCourseByTeacher(props) {
                         styles.lastItem : styles.centerItem}
                         />
                 )}
-                keyExtractor = {(item) => item.id}
                 horizontal
             />
         </View>

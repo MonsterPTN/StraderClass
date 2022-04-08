@@ -45,7 +45,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         paddingTop: 25,
         justifyContent: 'center',
-        paddingBottom: 80
+        paddingBottom: 24
     },
     viewMain1:{
         flexDirection: 'row',
@@ -80,7 +80,9 @@ export const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
-        elevation: 5
+        elevation: 5,
+        borderWidth:1,
+        borderColor:Colors.second
     },
     touchModal: {
         borderRadius: 5,
@@ -90,6 +92,12 @@ export const styles = StyleSheet.create({
         marginVertical: 5,
         alignItems: 'center',
         width: 120,
-        marginHorizontal:6
+        marginHorizontal:6,
+        backgroundColor:Colors.second
     },
+    textTouch:{
+        color:Colors.fifth,
+        fontSize:14,
+        fontFamily:Fonts.font_600
+    }
 });

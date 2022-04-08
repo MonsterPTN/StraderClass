@@ -1,48 +1,59 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, TextInput } from 'react-native'
+import React, { useState, useEffect,useContext } from "react";
+import { View, Text, StyleSheet, Alert, Image, TouchableOpacity } from 'react-native'
 import YoutubePlayer from 'react-native-youtube-iframe';
 import { s, scale } from "react-native-size-matters";
 import { Fonts } from "../../Until/Fonts";
 import { Colors } from "../../Until/Colors";
 import ListNextVideo from '../../Components/ListNextVideo'
 import { SafeAreaView } from "react-navigation";
+import { AuthContext } from "../../Redux/AuthContext";
 export default function TestScreen({ route, navigation }) {
     const [dataNextCourse, setDataNextCourse] = useState([]);
+    const { token } = useContext(AuthContext)
     const [isloading, setisLoading] = useState(true);
     useEffect(() => {
-        getListNextCourse();
+        setTimeout(() => {
+            getListNextCourse();
+            }, 1000);
         return () => {
 
         }
     }, [])
-    getListNextCourse = () => {
-        const apiURL = `https://traderclass.vn/api/video-course/${route.params?.itemId}`;
-        fetch(apiURL)
+    const getMyList = () => {
+        const apiURL = `https://traderclass.vn/api/add-course/${route.params?.itemId}`;
+        fetch(apiURL, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': token != "" ? `Bearer ${token.userToken}` : ""
+            },
+        })
             .then((res) => res.json())
             .then((resJson) => {
-                setDataNextCourse(resJson.data);
+              console.log("Add My List Success")
+              Alert.alert("Messenger",'Add My List Success');
             }).catch((error) => {
                 console.log('Request API ERROR', error);
             }).finally(() => setisLoading(false))
     }
-    React.useEffect(() => {
-        if (route.params?.itemUrlVideo) {
-        }
-        if (route.params?.itemNameVideo) {
-        }
-        if (route.params?.itemPhotoTeacher) {
-        }
-        if (route.params?.itemNameTeacher) {
-        }
-        if (route.params?.itemId) {
-        }
-    },
-        [route.params?.itemUrlVideo,
-        route.params?.itemNameVideo,
-        route.params?.itemPhotoTeacher,
-        route.params?.itemNameTeacher,
-        route.params?.itemId
-        ]);
+    const getListNextCourse = async () => {
+        const apiURL = `https://traderclass.vn/api/video-course/${route.params?.itemId}`;
+        fetch(apiURL, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((res) => res.json())
+            .then((resJson) => {
+                setDataNextCourse(resJson.data);
+console.log(resJson.data)
+            }).catch((error) => {
+                console.log('Request API ERROR', error);
+            }).finally(() => setisLoading(false))
+    }
     return (
         <SafeAreaView style={styles.viewMain}>
             <View>
@@ -64,6 +75,11 @@ export default function TestScreen({ route, navigation }) {
                         <View style={styles.view3}>
                             <Text style={styles.nameVideo}>{route.params?.itemNameTeacher}</Text>
                             <Text style={styles.text1}>300 video</Text>
+                        </View>
+                        <View style = {styles.view5}>
+                        <TouchableOpacity style = {styles.touWish} onPress={()=> getMyList()}>
+                            <Text style= {styles.textWish}>Add My List</Text>
+                        </TouchableOpacity>
                         </View>
                     </View>
                 </View>
@@ -177,5 +193,20 @@ const styles = StyleSheet.create({
     },
     viewCmt1: {
         marginLeft: 14
+    },
+    view5:{
+        justifyContent:'center',
+        alignItems:'flex-end',
+        flex:1,
+        marginRight:14,
+        
+    },
+    touWish:{
+        
+    },
+    textWish:{
+        color:Colors.fourth,
+        fontFamily:Fonts.font_500,
+        fontSize:14,
     }
 })

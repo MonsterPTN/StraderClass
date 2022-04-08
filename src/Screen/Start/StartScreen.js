@@ -26,7 +26,7 @@ export default function App({ navigation }) {
 
 
     <View style={styles.safeview}>
-      <ImageBackground source={require('../../Static/Image/background.png')} style = {{height:'100%',}} imageStyle = {{height:'100%'}}>
+      <ImageBackground source={{uri:"https://traderclass.vn/public/upload/images/course/thumb/94732711cf31016f5820.jpg"}} style = {{height:'100%',}} imageStyle = {{height:'100%'}}>
       <View style={styles.viewText}>
           <Text style={styles.slogan}>Learn,</Text>
           <Text style={styles.slogan}>learn more,</Text>
