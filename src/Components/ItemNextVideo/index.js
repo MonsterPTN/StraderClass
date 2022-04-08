@@ -17,7 +17,6 @@ export default function ItemNextVideo(props) {
                     <Image source={{uri:item.photo}} style = {styles.image}/>
                     <View style = {styles.view3}>
                     <Text style = {styles.text1}>{item.name}</Text>
-                    
                     </View>
                 </View>
                 <View>

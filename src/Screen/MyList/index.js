@@ -126,7 +126,7 @@ const MyList = (props) => {
                         <Text style={{ color: '#FF8600', fontSize: 16 }}>Chosse acction</Text>
                         <View style={{ padding: 10, marginVertical: 10 , flexDirection:'row'}}>
                             <TouchableOpacity style={styles.touchModal} onPress={()=>deleteMyList(values)}>
-                                <Text style={styles.textTouch}>Yess</Text>
+                                <Text style={styles.textTouch}>Yes</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.touchModal} onPress={() => setModalVisible(!modalVisible)}>
                                 <Text style={styles.textTouch}>No</Text>

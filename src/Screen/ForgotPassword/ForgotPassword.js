@@ -35,7 +35,7 @@ export default function App({ navigation }) {
 
 
         <SafeAreaView style={styles.safeview}>
-            <ImageBackground source={require('../../Static/Image/background.png')} style={{ height: '100%', flex: 1 }} imageStyle={{ height: '100%' }}>
+            <ImageBackground source={{uri:"https://traderclass.vn/public/upload/images/course/thumb/94732711cf31016f5820.jpg"}} style={{ height: '100%', flex: 1 }} imageStyle={{ height: '100%' }}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
                     <BackIcon style={styles.iconstyle} />
                 </TouchableOpacity>

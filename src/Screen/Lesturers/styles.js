@@ -222,15 +222,13 @@ export const styles = StyleSheet.create({
 
     text1: {
         marginTop: 30,
-        marginBottom: 8,
         fontSize: 38,
         color: Colors.fourth,
-
         fontFamily:Fonts.font_700
     },
 
     text2: {
-        marginTop: 18,
+        marginTop: 8,
         fontSize: 20,
         color: Colors.fourth,
         fontFamily:Fonts.font_400
@@ -241,7 +239,8 @@ export const styles = StyleSheet.create({
         paddingLeft: 15,
         paddingRight: 15,
         borderRadius: 5,
-        height: 164
+        height: 164,
+        justifyContent:'center'
     },
 
 
@@ -268,6 +267,18 @@ export const styles = StyleSheet.create({
         borderRadius: 5,
         marginLeft: 60,
         marginRight: 60,
+    },
+    register: {
+        alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: 'center',
+        backgroundColor: Colors.second,
+        borderRadius: 5,
+        marginLeft: 60,
+        marginRight: 60,
+        marginTop:12,
+        borderColor:Colors.fifth,
+        borderWidth:1
     },
     touch1: {
         paddingTop: 14,
@@ -329,6 +340,11 @@ export const styles = StyleSheet.create({
     viewClose:{
         alignItems:'flex-end',
         marginBottom:10
-    }
+    },
+    scroll:{
+         backgroundColor: Colors.primary,
+          padding: 15,
+           flex: 1 
+        }
 
 });

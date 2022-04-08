@@ -65,6 +65,7 @@ export const styles = StyleSheet.create({
     },
     view3: {
         backgroundColor: Colors.primary,
-        padding: 15
+        padding: 15,
+        flex:1
     }
 });

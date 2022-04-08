@@ -43,17 +43,6 @@ export default function Lesturers({ route, navigation }) {
         }
 
     }, [route.params?.itemNameTeacher, route.params?.itemPositionName, route.params?.itemPhoto, route.params?.itemId, route.params?.itemVideo]);
-    const renderItem2 = ({ item }) => {
-        return (
-            <View style={styles.viewitem2}>
-                <ImageBackground source={{ uri: item.photo }} style={styles.imglist2} imageStyle={{ borderRadius: 5 }}>
-                    <LinearGradient colors={['transparent', '#171921',]} style={styles.gradientList}>
-                        <Text style={styles.caption}>{item.name}</Text>
-                    </LinearGradient>
-                </ImageBackground>
-            </View>
-        )
-    }
     const [modalVisible, setModalVisible] = useState(false);
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -66,7 +55,7 @@ export default function Lesturers({ route, navigation }) {
             </TouchableOpacity> */}
                 </View>
             </View>
-            <ScrollView style={{ backgroundColor: '#171921', padding: 15, flex: 1 }}>
+            <ScrollView style={styles.scroll}>
 
                 <View>
                     <View style={{ height: 384 }}>
@@ -74,7 +63,6 @@ export default function Lesturers({ route, navigation }) {
                             <LinearGradient colors={['transparent', '#171921',]} style={styles.linearGradient}
                             >
                                 <Text style={styles.text1}>{route.params?.itemNameTeacher}</Text>
-
                                 <RectangleIcon />
                                 <Text style={styles.text2}>{route.params?.itemPositionName}</Text>
                             </LinearGradient>
@@ -92,6 +80,12 @@ export default function Lesturers({ route, navigation }) {
                         <WatchIcon />
                         <Text style={styles.touch2}> WATCH TRAILER</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity
+                            style={styles.register}
+                            onPress = {()=> navigation.navigate('Payment')}
+                        >
+                            <Text style={styles.touch2}>Regist now</Text>
+                        </TouchableOpacity>
                 </View>
                 <View>
                     <Text style={styles.title}>
@@ -127,10 +121,12 @@ export default function Lesturers({ route, navigation }) {
                     renderItem={renderItem2}
                     horizontal
                 /> */}
+                <View style = {{marginBottom:24}}>
                 <ListCourseByTeacher
                     data={dataCourse}
                     navigation={navigation} />
-                <View>
+                </View>
+                {/* <View>
                     <Text style={styles.tilebottom}>
                         How to enroll
                     </Text>
@@ -148,7 +144,7 @@ export default function Lesturers({ route, navigation }) {
                             <Text style={styles.regist}>Regist now</Text>
                         </TouchableOpacity>
                     </View>
-                </View>
+                </View> */}
             </ScrollView>
             <Modal
                 animationType="slide"
