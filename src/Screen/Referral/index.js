@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 import BackIcon from '../../Icons/BackIcon'
 import NonIcon from '../../Icons/NonIcon'
@@ -8,9 +8,10 @@ import Num3Icon from '../../Icons/Num3Icon'
 import { styles } from "./styles";
 import GoBack from '../../Components/GoBack'
 import Clipboard from '@react-native-community/clipboard';
-
+import { AuthContext } from "../../Redux/AuthContext";
 const IntroduceScreen = (props) => {
-    const copy = 'https://traderclass.vn/user'
+    const { token } = useContext(AuthContext)
+    const copy = 'https://traderclass.vn/user/'+ token.userToken
     const writeToClipboard = async () => {
         //To copy the text to clipboard
         Clipboard.setString(copy);
