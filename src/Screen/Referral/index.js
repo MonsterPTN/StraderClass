@@ -33,7 +33,9 @@ const IntroduceScreen = (props) => {
                 <Image source={require('../../Static/Image/people.png')} style={{ marginTop: 33 }}></Image>
             </View>
             <TouchableOpacity style={styles.viewShare} onPress={writeToClipboard}>
-                <Text style={styles.text1}>{copy}</Text>
+                <Text style={styles.text1}
+                numberOfLines = {1}
+                >{copy}</Text>
             </TouchableOpacity>
             <View style={{ marginTop: 16 }}>
                 <Text style={styles.text3}>How it works</Text>

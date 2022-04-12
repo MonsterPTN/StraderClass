@@ -55,6 +55,11 @@ const UserScreen = (props) => {
 
     useEffect(() => {
        getUser()
+       const unsubscribe = props.navigation.addListener('focus', () => {
+        console.log('Refreshed: ');
+        getUser()
+      });
+      return unsubscribe;
     }, [])
  
     const getLogout = () => {
