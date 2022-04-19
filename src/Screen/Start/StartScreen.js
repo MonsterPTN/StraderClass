@@ -19,7 +19,7 @@ import GoogleIcon from '../../Icons/GoogleIcon/GoogleIcon';
 import FaceBookIcon from '../../Icons/FacebookIcon/FaceBookIcon';
 import { scale } from 'react-native-size-matters';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
-
+import auth from '@react-native-firebase/auth';
 
 export default function App({ navigation }) {
   GoogleSignin.configure({
