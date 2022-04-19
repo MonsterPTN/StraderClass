@@ -33,8 +33,11 @@ export default function App({ navigation }) {
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
   
     // Sign-in the user with the credential
-    console.log(idToken)
-    return auth().signInWithCredential(googleCredential);
+    const user =  auth().signInWithCredential(googleCredential);
+    
+    user.then((u)=>{
+      console.log(u)
+    })
   }
   return (
 
