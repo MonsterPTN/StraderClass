@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Text, View, SafeAreaView, ScrollView, StatusBar, StyleSheet, TextInput, FlatList, Image, TouchableOpacity } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, StatusBar, StyleSheet, TextInput, FlatList, Image, TouchableOpacity, Alert } from 'react-native';
 import NonIcon from '../../Icons/NonIcon';
 import BackIcon from '../../Icons/BackIcon';
 import RightIcon from '../../Icons/RightIcon';
@@ -16,77 +16,133 @@ import { styles } from "./styles";
 import GoBack from '../../Components/GoBack'
 import { AuthContext } from "../../Redux/AuthContext";
 const UserScreen = (props) => {
-    const { token } = useContext(AuthContext)
-    const [user, setUser] = useState({
-        fullname: "",
-        phone: "",
-        photo: ""
-
-    })
+    const { token, setToken } = useContext(AuthContext)
+    const [fullname, setFullname] = useState('');
+    const [phone, setphone] = useState('');
+    const [photo, setphoto] = useState('');
+    const [address, setAddress] = useState('');
     
     useEffect(()=>{
 
     },[])
+    const getUser = () => {
+        const apiURL = 'https://traderclass.vn/api/user';
+        fetch(apiURL, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': token.userToken  ? `Bearer ${token.userToken}` : ""
+            },
+        })
+            .then((res) => res.json())
+            .then((resJson) => {
+                console.log("asdasd" ,resJson)
+                if (!resJson.status) {
+                    Alert.alert("message", resJson.msg)
+                } else {
+                    setFullname(resJson.data.fullname + "")
+                    setphone(resJson.data.phone + "")
+                    setphoto(resJson.data.photo + "")
+                    setAddress(resJson.data.address + "")
 
-    return (
-        <View style={styles.viewMain}>
-            <View style={styles.header}>
+                }
 
-                <TouchableOpacity style={{ paddingLeft: 6 }}  onPress={() => props.navigation.goBack()}>
-                   <GoBack navigation={props.navigation}/>
+            }).catch((error) => {
+                console.log('Error: ', error);
+            }).finally()
+    }
+
+    useEffect(() => {
+       getUser()
+       const unsubscribe = props.navigation.addListener('focus', () => {
+        getUser()
+      });
+      return unsubscribe;
+    }, [])
+ 
+    const getLogout = () => {
+    const apiURL = 'https://traderclass.vn/api/logout';
+    fetch(apiURL, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': token.userToken != "" ? `Bearer ${token.userToken}` : ""
+        },
+        body: JSON.stringify({
+           
+        })
+    })
+        .then((res) => res.json())
+        .then((resJson) => {
+            console.log(resJson)
+            if (!resJson.status) {
+                Alert.alert("message", resJson.msg)
+            } else {setToken({ loading: false, userToken: "" })
+        }
+    }).catch((error) => {
+        console.log('Error: ', error);
+    }).finally()
+}
+return (
+    <View style={styles.viewMain}>
+        <View style={styles.header}>
+
+            <TouchableOpacity style={{ paddingLeft: 6 }}  onPress={() => props.navigation.goBack()}>
+               <GoBack navigation={props.navigation}/>
+            </TouchableOpacity>
+            <Text style={styles.textHeader}>User</Text>
+            <View style={{ paddingLeft: 6 }}><NonIcon style={styles.iconHeader} /></View>
+        </View>
+        <ScrollView style={{ marginBottom: 25 }} >
+
+            <View style={styles.view1}>
+                <TouchableOpacity onPress={() => props.navigation.navigate('Profile')}>
+
+                    <View style={styles.viewTouch}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <Image source={{uri: photo}} style={styles.imgUser}></Image>
+                            <View style={styles.view2}>
+                                <Text style={styles.nameUser}>{fullname}</Text>
+                                <Text style={styles.number}>{phone}</Text>
+                            </View>
+                        </View>
+                        <View style={styles.view2}>
+                            <RightIcon />
+                        </View>
+                    </View>
                 </TouchableOpacity>
-                <Text style={styles.textHeader}>User</Text>
-                <View style={{ paddingLeft: 6 }}><NonIcon style={styles.iconHeader} /></View>
+                <RectagleLongIcon />
+                <TouchableOpacity onPress={() => props.navigation.navigate('Membership')}>
+
+                    <View style={styles.viewTouch}>
+                        <View style={styles.view3}>
+                            <VipIcon />
+                            <View style={styles.view2}>
+                                <Text style={styles.textTitle}>Membership package</Text>
+                            </View>
+                        </View>
+                        <View style={styles.view2}>
+                            <RightIcon />
+                        </View>
+                    </View>
+                </TouchableOpacity>
             </View>
-            <ScrollView style={{ marginBottom: 25 }} >
+            <View style={styles.view4}>
+                <TouchableOpacity onPress={() => props.navigation.navigate('Referall')}>
 
-                <View style={styles.view1}>
-                    <TouchableOpacity onPress={() => props.navigation.navigate('Profile')}>
-
-                        <View style={styles.viewTouch}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <Image source={{uri: token.userToken.user.photo}} style={styles.imgUser}></Image>
-                                <View style={styles.view2}>
-                                    <Text style={styles.nameUser}>{token.userToken.user.fullname}</Text>
-                                    <Text style={styles.number}>{token.userToken.user.phone}</Text>
-                                </View>
-                            </View>
+                    <View style={styles.viewTouch}>
+                        <View style={styles.view3}>
+                            <GroupAddIcon />
                             <View style={styles.view2}>
-                                <RightIcon />
+                                <Text style={styles.textTitle}>Referral</Text>
                             </View>
                         </View>
-                    </TouchableOpacity>
-                    <RectagleLongIcon />
-                    <TouchableOpacity onPress={() => props.navigation.navigate('Membership')}>
-
-                        <View style={styles.viewTouch}>
-                            <View style={styles.view3}>
-                                <VipIcon />
-                                <View style={styles.view2}>
-                                    <Text style={styles.textTitle}>Membership package</Text>
-                                </View>
-                            </View>
-                            <View style={styles.view2}>
-                                <RightIcon />
-                            </View>
+                        <View style={styles.view2}>
+                            <RightIcon />
                         </View>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.view4}>
-                    <TouchableOpacity onPress={() => props.navigation.navigate('Referall')}>
-
-                        <View style={styles.viewTouch}>
-                            <View style={styles.view3}>
-                                <GroupAddIcon />
-                                <View style={styles.view2}>
-                                    <Text style={styles.textTitle}>Referral</Text>
-                                </View>
-                            </View>
-                            <View style={styles.view2}>
-                                <RightIcon />
-                            </View>
-                        </View>
-                    </TouchableOpacity>
+                    </View></TouchableOpacity>
                     <RectagleLongIcon />
                     <TouchableOpacity onPress={() => props.navigation.navigate('UpdateEmail')}>
 
@@ -149,8 +205,7 @@ const UserScreen = (props) => {
                             </View>
                         </View>
                     </TouchableOpacity>
-                    <RectagleLongIcon />
-                    <TouchableOpacity onPress={() => props.navigation.navigate('Terms')}>
+                    <RectagleLongIcon /><TouchableOpacity onPress={() => props.navigation.navigate('Terms')}>
                         <View style={styles.viewTouch}>
                             <View style={styles.view3}>
                                 <TempIcon />
@@ -169,7 +224,7 @@ const UserScreen = (props) => {
                     <Text style={styles.text1}>Note</Text>
                     <Text style={styles.text2}> Each account can only use one device. Do not share the account with others.</Text>
                 </View>
-                <TouchableOpacity style={styles.touSave}>
+                <TouchableOpacity style={[styles.touSave]} onPress={() => getLogout()}>
                     <LogOutIcon />
                     <Text style={styles.text3}>Log Out</Text>
                 </TouchableOpacity>
