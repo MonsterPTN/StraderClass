@@ -18,10 +18,24 @@ import AppleIcon from '../../Icons/AppleIcon/AppleIcon';
 import GoogleIcon from '../../Icons/GoogleIcon/GoogleIcon';
 import FaceBookIcon from '../../Icons/FacebookIcon/FaceBookIcon';
 import { scale } from 'react-native-size-matters';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 
 export default function App({ navigation }) {
-
+  GoogleSignin.configure({
+    webClientId: '415484737583-h9r46fnd6sagfhrrq5nje7coeasjtn8t.apps.googleusercontent.com',
+  });
+  async function onGoogleButtonPress() {
+    // Get the users ID token
+    const { idToken } = await GoogleSignin.signIn();
+  
+    // Create a Google credential with the token
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+  
+    // Sign-in the user with the credential
+    console.log(idToken)
+    return auth().signInWithCredential(googleCredential);
+  }
   return (
 
 
@@ -49,7 +63,7 @@ export default function App({ navigation }) {
               </Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.touchGG,]}>
+          <TouchableOpacity style={[styles.touchGG,]} onPress={()=>onGoogleButtonPress()}>
             <View style={styles.viewIcon}>
               <GoogleIcon style={{ marginRight: 10 }} />
               <Text style={[styles.textTouchGG]}>

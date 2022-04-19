@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "415484737583",
+    "project_id": "traderclass-signin",
+    "storage_bucket": "traderclass-signin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415484737583:android:f303ce8263d3dea5132eda",
+        "android_client_info": {
+          "package_name": "com.traderclass"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415484737583-6d5vhdl93p473cg39mlcsbo7439urhdt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.traderclass",
+            "certificate_hash": "4f4f97e8196bf516e08986a49e5f74b6ecc2a383"
+          }
+        },
+        {
+          "client_id": "415484737583-hqfgpsu57qq6ku8uiekqhjo0h9b9ohe7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.traderclass",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "415484737583-h9r46fnd6sagfhrrq5nje7coeasjtn8t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHz5DKIH-VsRvjLBH-oBv0rd9-OppV5HY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415484737583-h9r46fnd6sagfhrrq5nje7coeasjtn8t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
