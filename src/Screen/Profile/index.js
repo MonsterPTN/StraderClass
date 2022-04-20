@@ -9,22 +9,6 @@ import { AuthContext } from "../../Redux/AuthContext";
 
 import GoBack from '../../Components/GoBack'
 
-const takePhotoFromCamra = () => {
-    ImagePicker.openCamera({
-        compressImageMaxWidth: 300,
-        compressImageMaxHeight: 300,
-        cropping: true,
-        compressImageQuality: 0.7,
-        multiple: true,
-        includeBase64: true,
-    }).then(image => {
-        // console.log("Image",image);
-        this.setState({ image: image.path });
-        this.setState({ data: image.data });
-        this.bs.current.snapTo(1);
-    });
-
-}
 
 
 const ProfileScreen = (props) => {
@@ -54,7 +38,26 @@ const ProfileScreen = (props) => {
     }
 
 
-
+    const takePhotoFromCamra = () => {
+        ImagePicker.openCamera({
+            compressImageMaxWidth: 300,
+            compressImageMaxHeight: 300,
+            cropping: true,
+            compressImageQuality: 0.7,
+            multiple: true,
+            includeBase64: true,
+        }).then(image => {
+            setPhoto(image.path)
+            setImageFile({
+                uri: image.path,
+                type: image.mime,
+                name: image.modificationDate
+            })
+            setModalVisible(!modalVisible)
+        });
+    
+    }
+    
     let getUpDaTe = async () => {
         const data = new FormData()
         data.append('photo', imageFile)
