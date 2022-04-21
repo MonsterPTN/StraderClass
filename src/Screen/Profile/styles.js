@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
     modalText: {
         marginBottom: 15,
         textAlign: "center",
-        fontFamily:Fonts.font_700
+        fontFamily: Fonts.font_700
     },
     textTouch: {
         color: Colors.second, fontSize: 14
@@ -90,21 +90,30 @@ export const styles = StyleSheet.create({
         flex: 1,
         paddingRight: 5
     },
-touSave:{
-     flexDirection: 'row', 
-     borderRadius: 5,
-      borderColor: Colors.second,
-       borderWidth: 1,
+    touSave: {
+        flexDirection: 'row',
+        borderRadius: 5,
+        borderColor: Colors.second,
+        borderWidth: 1,
         justifyContent: 'center',
-         paddingVertical: 9,
-         backgroundColor:Colors.third 
-        },
-        textSave:{
-             color: Colors.second,
-              fontSize: 18, 
-              marginLeft: 3 
-            },
-
+        paddingVertical: 9,
+        backgroundColor: Colors.third
+    },
+    textSave: {
+        color: Colors.second,
+        fontSize: 18,
+        marginLeft: 3
+    },
+    textinput: {
+        selectionColor: 'white',
+        backfaceVisibility:'visible',
+        color:'white',
+        borderBottomWidth:2,
+        width:'100%',
+        borderColor:'gray',
+        placeholderTextColor:'gray'
+        
+    },
 
 
 });

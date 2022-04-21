@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Text, View, Modal, Pressable, StatusBar, StyleSheet, FlatList, Image, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, Modal, Pressable, StatusBar, StyleSheet, FlatList, Image, TouchableOpacity, TextInput, Alert } from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
 import BackIcon from '../../Icons/BackIcon';
 import NonIcon from '../../Icons/NonIcon';
@@ -8,36 +8,6 @@ import SaveIcon from '../../Icons/SaveIcon'
 import { AuthContext } from "../../Redux/AuthContext";
 
 import GoBack from '../../Components/GoBack'
-const choosePhotoFromLibrary = () => {
-    ImagePicker.openPicker({
-        width: 300,
-        height: 300,
-        cropping: true,
-        compressImageQuality: 0.7,
-        includeBase64: true,
-    }).then(image => {
-        // console.log(image);
-        this.setState({ image: image.path });
-        this.setState({ data: image.data });
-        this.bs.current.snapTo(1);
-    });
-}
-const takePhotoFromCamra = () => {
-    ImagePicker.openCamera({
-        compressImageMaxWidth: 300,
-        compressImageMaxHeight: 300,
-        cropping: true,
-        compressImageQuality: 0.7,
-        multiple: true,
-        includeBase64: true,
-    }).then(image => {
-        // console.log("Image",image);
-        this.setState({ image: image.path });
-        this.setState({ data: image.data });
-        this.bs.current.snapTo(1);
-    });
-
-}
 
 
 
@@ -45,29 +15,114 @@ const ProfileScreen = (props) => {
     // const refRBSheet = useRef();
     const [modalVisible, setModalVisible] = useState(false);
     const { token } = useContext(AuthContext)
-    const [user, setUser] = useState({
-        fullname: "",
-        phone: "",
-        address: "",
-        photo: "",
+    const [fullname, setFullname] = useState("");
+    const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
+    const [photo, setPhoto] = useState("");
+    const [imageFile, setImageFile] = useState({});
+    const choosePhotoFromLibrary = () => {
+        ImagePicker.openPicker({
+            width: 300,
+            height: 300,
+            cropping: true,
+            compressImageQuality: 0.7
+        }).then(image => {
+            setPhoto(image.path)
+            setImageFile({
+                uri: image.path,
+                type: image.mime,
+                name: image.modificationDate
+            })
+            setModalVisible(!modalVisible)
+        });
+    }
+
+
+    const takePhotoFromCamra = () => {
+        ImagePicker.openCamera({
+            compressImageMaxWidth: 300,
+            compressImageMaxHeight: 300,
+            cropping: true,
+            compressImageQuality: 0.7,
+            multiple: true,
+            includeBase64: true,
+        }).then(image => {
+            setPhoto(image.path)
+            setImageFile({
+                uri: image.path,
+                type: image.mime,
+                name: image.modificationDate
+            })
+            setModalVisible(!modalVisible)
+        });
+    
+    }
+    
+    let getUpDaTe = async () => {
+        const data = new FormData()
+        data.append('photo', imageFile)
+        data.append('fullname', fullname)
+        data.append('phone', phone)
+        data.append('address', address)
+        let res = await fetch(
+            'https://traderclass.vn/api/update-user',
+            {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'multipart/form-data; ',
+                    'Authorization': token.userToken != "" ? `Bearer ${token.userToken}` : ""
+                },
+            }
+        );
+        const responseJson = await res.json();
+        console.log("sdfs" , responseJson)
+        if (responseJson.status) {
+            props.navigation.navigate('User')
+        }
+    };
+    const geProfile = () => {
+        const apiURL = 'https://traderclass.vn/api/user';
+        fetch(apiURL, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': token.userToken ? `Bearer ${token.userToken}` : ""
+            },
         })
+            .then((res) => res.json())
+            .then((resJson) => {
+                console.log("asdasd", resJson)
+                if (!resJson.status) {
+                    Alert.alert("message", resJson.msg)
+                } else {
+                    setFullname(resJson.data.fullname + "")
+                    setPhone(resJson.data.phone + "")
+                    setPhoto(resJson.data.photo + "")
+                    setAddress(resJson.data.address + "")
 
-    
+                }
 
-    
-    useEffect(()=>{
+            }).catch((error) => {
+                console.log('Error: ', error);
+            })
+    }
 
-    },[])
+    useEffect(() => {
+        geProfile()
+    }, [])
     return (
         <View style={styles.viewMain}>
             <View style={styles.header}>
-            <GoBack navigation={props.navigation}/>
+                <GoBack navigation={props.navigation} />
                 <Text style={styles.textHeader}>Account Infomation</Text>
                 <View style={{ paddingLeft: 6 }}><NonIcon style={styles.iconHeader} /></View>
             </View>
             <View style={styles.view1}>
                 <TouchableOpacity onPress={() => setModalVisible(true)} >
-                    <Image style={styles.image} source={{uri: token.userToken.user.photo}}></Image>
+                    <Image value={photo} style={styles.image} source={{ uri: photo }}></Image>
                 </TouchableOpacity>
 
             </View>
@@ -76,48 +131,38 @@ const ProfileScreen = (props) => {
                     <View style={styles.view4} >
                         <Text style={{ color: 'white' }}>Name</Text>
                         <TextInput
-                            backfaceVisibility={'visible'}
-                            color={'white'}
-                            borderBottomWidth={2}
-                            width={'100%'}
-                            borderColor={'gray'}
-                            placeholder={token.userToken.user.fullname}
-                            placeholderTextColor={'gray'}
-                            selectionColor='white'
+                            value={fullname}
+                            onChangeText={setFullname}
+                            placeholder={fullname}
+                            style={styles.textinput}
                         />
                     </View>
-                   
+
                 </View>
                 <View style={{ marginTop: 15 }}>
                     <Text style={{ color: 'white' }}>Number phone</Text>
                     <TextInput
-                        backfaceVisibility={'visible'}
-                        color={'white'}
-                        borderBottomWidth={2}
-                        width={'100%'}
-                        borderColor={'gray'}
-                        placeholder={token.userToken.user.phone}
-                        placeholderTextColor={'white'}
-                        selectionColor='white'
+                        value={phone}
+                        onChangeText={setPhone}
+                        style={styles.textinput}
+                        placeholder={phone}
+
                     />
                 </View>
                 <View style={{ marginTop: 15 }}>
                     <Text style={{ color: 'white' }}>Address</Text>
                     <TextInput
-                        backfaceVisibility={'visible'}
-                        color={'white'}
-                        borderBottomWidth={2}
-                        width={'100%'}
+                        value={address}
+                        onChangeText={setAddress}
+                        style={styles.textinput}
                         borderColor={'gray'}
-                        placeholder={token.userToken.user.address}
-                        placeholderTextColor={'white'}
-                        selectionColor='white'
+                        placeholder={address}
                     />
                 </View>
 
             </View>
             <View style={{ marginTop: 49 }}>
-                <TouchableOpacity style={styles.touSave}>
+                <TouchableOpacity style={[styles.touSave]} onPress={() => getUpDaTe()} >
                     <SaveIcon />
                     <Text style={styles.textSave} >Save</Text>
                 </TouchableOpacity>

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Text, View, SafeAreaView, ScrollView, StatusBar, StyleSheet, TextInput, FlatList, Image, TouchableOpacity } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, StatusBar, StyleSheet, TextInput, FlatList, Image, TouchableOpacity, Alert } from 'react-native';
 import NonIcon from '../../Icons/NonIcon';
 import BackIcon from '../../Icons/BackIcon';
 import RightIcon from '../../Icons/RightIcon';
@@ -17,17 +17,71 @@ import GoBack from '../../Components/GoBack'
 import { AuthContext } from "../../Redux/AuthContext";
 const UserScreen = (props) => {
     const { token } = useContext(AuthContext)
-    const [user, setUser] = useState({
-        fullname: "",
-        phone: "",
-        photo: ""
-
-    })
+    const [fullname, setFullname] = useState('');
+    const [phone, setphone] = useState('');
+    const [photo, setphoto] = useState('');
+    const [address, setAddress] = useState('');
     
     useEffect(()=>{
 
     },[])
+    const getUser = () => {
+        const apiURL = 'https://traderclass.vn/api/user';
+        fetch(apiURL, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': token.userToken  ? `Bearer ${token.userToken}` : ""
+            },
+        })
+            .then((res) => res.json())
+            .then((resJson) => {
+                console.log("asdasd" ,resJson)
+                if (!resJson.status) {
+                    Alert.alert("message", resJson.msg)
+                } else {
+                    setFullname(resJson.data.fullname + "")
+                    setphone(resJson.data.phone + "")
+                    setphoto(resJson.data.photo + "")
+                    setAddress(resJson.data.address + "")
 
+                }
+
+            }).catch((error) => {
+                console.log('Error: ', error);
+            }).finally()
+    }
+
+    useEffect(() => {
+       getUser()
+    }, [])
+ 
+    const getLogout = () => {
+    const apiURL = 'https://traderclass.vn/api/logout';
+    fetch(apiURL, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': token.userToken != "" ? `Bearer ${token.userToken}` : ""
+        },
+        body: JSON.stringify({
+           
+        })
+    })
+        .then((res) => res.json())
+        .then((resJson) => {
+            console.log(resJson)
+            if (!resJson.status) {
+                Alert.alert("message", resJson.msg)
+            } else {
+                props.navigation.navigate('StartScreen')
+            }
+        }).catch((error) => {
+            console.log('Error: ', error);
+        }).finally()
+}
     return (
         <View style={styles.viewMain}>
             <View style={styles.header}>
@@ -45,10 +99,10 @@ const UserScreen = (props) => {
 
                         <View style={styles.viewTouch}>
                             <View style={{ flexDirection: 'row' }}>
-                                <Image source={{uri: token.userToken.user.photo}} style={styles.imgUser}></Image>
+                                <Image source={{uri: photo}} style={styles.imgUser}></Image>
                                 <View style={styles.view2}>
-                                    <Text style={styles.nameUser}>{token.userToken.user.fullname}</Text>
-                                    <Text style={styles.number}>{token.userToken.user.phone}</Text>
+                                    <Text style={styles.nameUser}>{fullname}</Text>
+                                    <Text style={styles.number}>{phone}</Text>
                                 </View>
                             </View>
                             <View style={styles.view2}>
@@ -169,7 +223,7 @@ const UserScreen = (props) => {
                     <Text style={styles.text1}>Note</Text>
                     <Text style={styles.text2}> Each account can only use one device. Do not share the account with others.</Text>
                 </View>
-                <TouchableOpacity style={styles.touSave}>
+                <TouchableOpacity style={[styles.touSave]} onPress={() => getLogout()}>
                     <LogOutIcon />
                     <Text style={styles.text3}>Log Out</Text>
                 </TouchableOpacity>
