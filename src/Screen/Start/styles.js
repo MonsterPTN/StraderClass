@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { Colors } from '../../Until/Colors'
 
 export const styles = StyleSheet.create({
     viewIcon: {
@@ -30,11 +29,11 @@ export const styles = StyleSheet.create({
     slogan: {
         fontSize: 40,
         fontWeight: '700',
-        color: Colors.fourth,
+        color: '#FFFFFF',
 
     },
     touchSI: {
-        backgroundColor: Colors.second,
+        backgroundColor: '#FF8600',
         margin: 7,
         width: '90%',
         alignItems: 'center',
@@ -71,7 +70,7 @@ export const styles = StyleSheet.create({
     },
     safeview: {
         flex: 1,
-        backgroundColor: Colors.primary,
+        backgroundColor: '#171921',
     },
     viewText: {
         flex: 2,

@@ -1,13 +1,13 @@
 import { StyleSheet } from "react-native";
 import { Colors } from "../../Until/Colors";
-import {Fonts} from '../../Until/Fonts';
+import {Fonts} from '../../Until/Fonts'
 export const styles = StyleSheet.create({
     textWR: {
         color: Colors.fourth,
         fontWeight: '500'
     },
     textBF: {
-        color:  Colors.fourth,
+        color: '#FFFFFF',
         fontWeight: '500',
         fontFamily:Fonts.font_700
     },
@@ -17,26 +17,26 @@ export const styles = StyleSheet.create({
     },
     descripText: {
         textAlign: 'center',
-        color: Colors.second,
+        color: '#FF8600',
         marginBottom: 30,
 
     },
     createText: {
         marginBottom: 50,
         textAlign: 'center',
-        color: Colors.second,
+        color: '#FF8600',
         fontSize: 33,
         fontWeight: '600',
 
     },
     textForgot: {
         margin: 10,
-        color:  Colors.fourth,
+        color: '#FFFFFF',
         fontWeight: '500',
         textAlign: 'center',
     },
     textSignup: {
-        color: Colors.second,
+        color: '#FF8600',
         fontWeight: '500',
         marginLeft: 5,
     },
@@ -56,12 +56,12 @@ export const styles = StyleSheet.create({
         backgroundColor:  Colors.eleventh,
         borderColor: Colors.second,
         paddingHorizontal: 25,
-        color: Colors.second,
+        color: '#FF8600',
         margin: 10,
 
     },
     textTouchSigup: {
-        color: Colors.fifth,
+        color: '#000000',
         fontSize: 14,
         fontWeight: '700',
     },
@@ -70,7 +70,7 @@ export const styles = StyleSheet.create({
         marginBottom: 40,
     },
     touchSignup: {
-        backgroundColor: Colors.second,
+        backgroundColor: '#FF8600',
         width: '90%',
         alignItems: 'center',
         paddingVertical: 15,
@@ -79,7 +79,7 @@ export const styles = StyleSheet.create({
     },
     safeview: {
         flex: 1,
-        backgroundColor:  Colors.fifth,
+        backgroundColor: '#000000',
     },
 });
 

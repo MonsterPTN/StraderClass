@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect, useContext } from 'react';
 import { styles } from './styles'
-import { Colors } from '../../Until/Colors'
 
 import {
     SafeAreaView,
@@ -75,7 +74,7 @@ export default function App({ navigation }) {
                         onChangeText={setEmail}
                         style={styles.input}
                         placeholder="User..."
-                        placeholderTextColor={Colors.second}
+                        placeholderTextColor={'#FF8600'}
                     >
 
                     </TextInput>
@@ -87,7 +86,7 @@ export default function App({ navigation }) {
                         onChangeText={setPassWord}
                         style={styles.input}
                         placeholder="Password..."
-                        placeholderTextColor={Colors.second}
+                        placeholderTextColor={'#FF8600'}
                         secureTextEntry
                     >
 

@@ -1,33 +1,32 @@
 import { StyleSheet } from "react-native";
-import { Colors } from '../../Until/Colors';
 
 export const styles = StyleSheet.create({
     textDA: {
-        color: Colors.fourth,
+        color: '#FFFFFF',
         fontWeight: '500'
     },
     descripText: {
         textAlign: 'center',
-        color: Colors.second,
+        color: '#FF8600',
         marginBottom: 30,
 
     },
     welcomeText: {
         marginTop: 30,
         textAlign: 'center',
-        color: Colors.second,
+        color: '#FF8600',
         fontSize: 33,
         fontWeight: '600',
 
     },
     textForgot: {
         margin: 10,
-        color: Colors.fourth,
+        color: '#FFFFFF',
         fontWeight: '500',
         textAlign: 'center',
     },
     textSignup: {
-        color: Colors.second,
+        color: '#FF8600',
         fontWeight: '500',
         marginLeft: 5,
     },
@@ -58,7 +57,7 @@ export const styles = StyleSheet.create({
 
     },
     textTouch: {
-        color: Colors.fifth,
+        color: '#000000',
         fontSize: 14,
         fontWeight: '700',
     },
@@ -66,7 +65,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     touchLogin: {
-        backgroundColor: Colors.second,
+        backgroundColor: '#FF8600',
         width: '90%',
         alignItems: 'center',
         paddingVertical: 17,
@@ -75,11 +74,11 @@ export const styles = StyleSheet.create({
     },
     safeview: {
         flex: 1,
-        backgroundColor: Colors.primary,
+        backgroundColor: '#171921',
     },
     viewTop: {
         flex:2,
-        backgroundColor: Colors.primary,
+        backgroundColor: '#171921',
     },
     viewBot: {
         borderTopLeftRadius: 30,

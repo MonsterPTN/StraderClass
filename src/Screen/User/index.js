@@ -16,7 +16,7 @@ import { styles } from "./styles";
 import GoBack from '../../Components/GoBack'
 import { AuthContext } from "../../Redux/AuthContext";
 const UserScreen = (props) => {
-    const { token } = useContext(AuthContext)
+    const { token, setToken } = useContext(AuthContext)
     const [fullname, setFullname] = useState('');
     const [phone, setphone] = useState('');
     const [photo, setphoto] = useState('');
@@ -55,6 +55,11 @@ const UserScreen = (props) => {
 
     useEffect(() => {
        getUser()
+       const unsubscribe = props.navigation.addListener('focus', () => {
+        console.log('Refreshed: ');
+        getUser()
+      });
+      return unsubscribe;
     }, [])
  
     const getLogout = () => {
@@ -76,7 +81,7 @@ const UserScreen = (props) => {
             if (!resJson.status) {
                 Alert.alert("message", resJson.msg)
             } else {
-                props.navigation.navigate('StartScreen')
+                setToken({ loading: false, userToken: "" })
             }
         }).catch((error) => {
             console.log('Error: ', error);

@@ -8,9 +8,10 @@ import Num3Icon from '../../Icons/Num3Icon'
 import { styles } from "./styles";
 import GoBack from '../../Components/GoBack'
 import Clipboard from '@react-native-community/clipboard';
-
+import { AuthContext } from "../../Redux/AuthContext";
 const IntroduceScreen = (props) => {
-    const copy = 'https://traderclass.vn/user'
+    const { token } = useContext(AuthContext)
+    const copy = 'https://traderclass.vn/user/'+ token.userToken
     const writeToClipboard = async () => {
         //To copy the text to clipboard
         Clipboard.setString(copy);
@@ -32,7 +33,9 @@ const IntroduceScreen = (props) => {
                 <Image source={require('../../Static/Image/people.png')} style={{ marginTop: 33 }}></Image>
             </View>
             <TouchableOpacity style={styles.viewShare} onPress={writeToClipboard}>
-                <Text style={styles.text1}>{copy}</Text>
+                <Text style={styles.text1}
+                numberOfLines = {1}
+                >{copy}</Text>
             </TouchableOpacity>
             <View style={{ marginTop: 16 }}>
                 <Text style={styles.text3}>How it works</Text>
